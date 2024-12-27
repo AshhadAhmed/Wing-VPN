@@ -100,8 +100,8 @@ class ServersScreen extends StatelessWidget {
                 flags: provider.flags,
                 serverStrength: provider.strengths,
               ),
-              builder: (contxt, serverInfo, _) {
-                if (serverInfo.servers.isEmpty) {
+              builder: (contxt, detailedServerInfo, _) {
+                if (detailedServerInfo.servers.isEmpty) {
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
@@ -128,11 +128,11 @@ class ServersScreen extends StatelessWidget {
                   child: ListView.builder(
                     padding: EdgeInsets.only(bottom: 10.0),
                     itemExtent: 70.0,
-                    itemCount: serverInfo.servers.length,
+                    itemCount: detailedServerInfo.servers.length,
                     itemBuilder: (contxt, index) {
-                      final server = serverInfo.servers[index];
-                      final flag = serverInfo.flags[index];
-                      final strength = serverInfo.serverStrength[index];
+                      final server = detailedServerInfo.servers[index];
+                      final flag = detailedServerInfo.flags[index];
+                      final strength = detailedServerInfo.serverStrength[index];
 
                       return AnimationConfiguration.staggeredList(
                         position: index,
@@ -143,11 +143,11 @@ class ServersScreen extends StatelessWidget {
                           child: FadeInAnimation(
                             duration: Duration(milliseconds: 300),
                             delay: Duration(milliseconds: 20),
-                            child: SizedBox(
-                              width: MediaQuery.sizeOf(context).width * 0.9,
-                              child: Material(
-                                color: Colors.transparent,
-                                borderRadius: BorderRadius.zero,
+                            child: Material(
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.zero,
+                              child: SizedBox(
+                                width: MediaQuery.sizeOf(context).width * 0.9,
                                 child: Padding(
                                   padding: EdgeInsets.only(
                                     top: 6.0,
@@ -234,55 +234,58 @@ class CustomListTile extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       borderRadius: BorderRadius.zero,
-      child: ListTile(
-        dense: true,
-        onTap: () =>
-            context.read<VpnProvider>().currentServer.server == titleText
-                ? showConnectedToServerDialog(context)
-                : showConnectToServerDialog(
-                    context,
-                    server: titleText,
-                    image: backgroundImage,
-                  ),
-        tileColor: Color(0XFF1D2031),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(14.0),
-        ),
-        leading: CircleAvatar(backgroundImage: backgroundImage),
-        title: Text(
-          titleText,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 15.0,
-            fontFamily: "Montserrat",
-            fontWeight: FontWeight.w500,
+      child: SizedBox(
+        width: MediaQuery.sizeOf(context).width * 0.9,
+        child: ListTile(
+          dense: true,
+          onTap: () =>
+              context.read<VpnProvider>().currentServer.server == titleText
+                  ? showConnectedToServerDialog(context)
+                  : showConnectToServerDialog(
+                      context,
+                      server: titleText,
+                      image: backgroundImage,
+                    ),
+          tileColor: Color(0XFF1D2031),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14.0),
           ),
-        ),
-        subtitle: Text(
-          "IP - 127.123.21.12",
-          style: TextStyle(
-            color: Color(0XFF7C7F90),
-            fontSize: 12.0,
-            fontFamily: "Montserrat",
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        splashColor: Colors.transparent,
-        trailing: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Image.asset(
-              "assets/images/wifi_${serverStrength.toLowerCase()}.png",
-              height: 18.0,
+          leading: CircleAvatar(backgroundImage: backgroundImage),
+          title: Text(
+            titleText,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 15.0,
+              fontFamily: "Montserrat",
+              fontWeight: FontWeight.w500,
             ),
-            SizedBox(width: 16.0),
-            FavoriteButton(
-              server: titleText,
-              flag: backgroundImage,
-              strength: AssetImage(
-                  "assets/images/wifi_${serverStrength.toLowerCase()}.png"),
-            )
-          ],
+          ),
+          subtitle: Text(
+            "IP - 127.123.21.12",
+            style: TextStyle(
+              color: Color(0XFF7C7F90),
+              fontSize: 12.0,
+              fontFamily: "Montserrat",
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          splashColor: Colors.transparent,
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Image.asset(
+                "assets/images/wifi_${serverStrength.toLowerCase()}.png",
+                height: 18.0,
+              ),
+              SizedBox(width: 16.0),
+              FavoriteButton(
+                server: titleText,
+                flag: backgroundImage,
+                strength: AssetImage(
+                    "assets/images/wifi_${serverStrength.toLowerCase()}.png"),
+              )
+            ],
+          ),
         ),
       ),
     );

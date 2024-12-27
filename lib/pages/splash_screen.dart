@@ -24,21 +24,6 @@ class _SplashScreenState extends State<SplashScreen> {
         final storage = GetStorage();
         final linearProgressProvider = context.read<LinearProgressProvider>();
 
-        await precacheImage(AssetImage("assets/images/US_flag.jpg"), context);
-        await precacheImage(AssetImage("assets/images/Uk_flag.png"), context);
-        await precacheImage(
-            AssetImage("assets/images/china_flag.png"), context);
-        await precacheImage(
-            AssetImage("assets/images/singapore_flag.png"), context);
-        await precacheImage(
-            AssetImage("assets/images/canada_flag.png"), context);
-        await precacheImage(
-            AssetImage("assets/images/france_flag.png"), context);
-        await precacheImage(
-            AssetImage("assets/images/germany_flag.png"), context);
-        await precacheImage(
-            AssetImage("assets/images/netherlands_flag.png"), context);
-
         linearProgressProvider.initiateProgress(() {
           final status = storage.read<bool>("status") ?? false;
 
@@ -48,6 +33,8 @@ class _SplashScreenState extends State<SplashScreen> {
             Navigator.pushReplacementNamed(context, "/getting_started");
           }
         });
+
+        await precacheImage(AssetImage("assets/images/US_flag.jpg"), context);
       },
     );
   }
