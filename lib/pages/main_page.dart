@@ -68,63 +68,69 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20.0),
-              Selector<VpnProvider, ServerInfo>(
-                selector: (context, provider) => ServerInfo(
-                  server: provider.currentServer.server,
-                  flag: provider.currentServer.flag,
-                ),
-                builder: (contxt, serverInfo, _) => SizedBox(
-                  width: MediaQuery.sizeOf(contxt).width * 0.9,
-                  child: ListTile(
-                    onTap: () => Navigator.pushNamed(contxt, "/connection"),
-                    tileColor: Color(0XFF1D2031),
-                    leading: CircleAvatar(
-                      radius: 19.0,
-                      backgroundImage: serverInfo.flag,
+              Builder(
+                builder: (context) {
+                  var serverInfo = context.select<VpnProvider, ServerInfo>(
+                    (provider) => ServerInfo(
+                      server: provider.currentServer.server,
+                      flag: provider.currentServer.flag,
                     ),
-                    splashColor: Colors.transparent,
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(color: Colors.blue),
-                      borderRadius: BorderRadius.circular(114.0),
-                    ),
-                    title: Text(
-                      serverInfo.server!,
-                      style: TextStyle(
-                        fontSize: 16.0,
+                  );
+
+                  return SizedBox(
+                    width: MediaQuery.sizeOf(context).width * 0.9,
+                    child: ListTile(
+                      onTap: () => Navigator.pushNamed(context, "/connection"),
+                      tileColor: Color(0XFF1D2031),
+                      leading: CircleAvatar(
+                        radius: 19.0,
+                        backgroundImage: serverInfo.flag,
+                      ),
+                      splashColor: Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.blue),
+                        borderRadius: BorderRadius.circular(114.0),
+                      ),
+                      title: Text(
+                        serverInfo.server!,
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.white,
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      subtitle: Text(
+                        "IP - 127.123.21.12",
+                        style: TextStyle(
+                          fontSize: 12.0,
+                          color: Color(0XFF7C7F90),
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      trailing: Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        size: 18.0,
                         color: Colors.white,
-                        fontFamily: "Montserrat",
-                        fontWeight: FontWeight.w500,
                       ),
                     ),
-                    subtitle: Text(
-                      "IP - 127.123.21.12",
-                      style: TextStyle(
-                        fontSize: 12.0,
-                        color: Color(0XFF7C7F90),
-                        fontFamily: "Montserrat",
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    trailing: Icon(
-                      Icons.arrow_forward_ios_rounded,
-                      size: 18.0,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
+                  );
+                },
               ),
               SizedBox(height: 52.0),
-              Selector<VpnProvider, VpnConnectionStatus>(
-                selector: (context, provider) => VpnConnectionStatus(
-                  isConnecting: provider.isConnecting,
-                  isConnected: provider.isConnected,
-                ),
-                builder: (contxt, status, _) {
+              Builder(
+                builder: (context) {
+                  var isConnected = context.select<VpnProvider, bool>(
+                      (provider) => provider.isConnected);
+                  var isConnecting = context.select<VpnProvider, bool>(
+                      (provider) => provider.isConnecting);
+
                   return GestureDetector(
-                    onTap: contxt.read<VpnProvider>().enableConnection,
+                    onTap: context.read<VpnProvider>().enableConnection,
                     child: AnimatedSwitcher(
                       duration: Duration(milliseconds: 500),
-                      child: status.isConnecting
+                      child: isConnecting
                           ? Container(
                               key: ValueKey("Connecting"),
                               width: 140.0,
@@ -145,7 +151,7 @@ class MainScreen extends StatelessWidget {
                                 ),
                               ),
                             )
-                          : status.isConnected
+                          : isConnected
                               ? Container(
                                   key: ValueKey("Connected"),
                                   width: 140.0,
@@ -220,56 +226,63 @@ class MainScreen extends StatelessWidget {
                 },
               ),
               SizedBox(height: 40.0),
-              Selector<VpnProvider, VpnConnectionStatus>(
-                selector: (context, provider) => VpnConnectionStatus(
-                  isConnecting: provider.isConnecting,
-                  isConnected: provider.isConnected,
-                ),
-                builder: (contxt, status, _) => RichText(
-                  text: TextSpan(
-                    children: <InlineSpan>[
-                      TextSpan(
-                        text: "Status : ",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14.0,
-                          fontFamily: "Montserrat",
-                          fontWeight: FontWeight.w600,
+              Builder(
+                builder: (context) {
+                  var isConnected = context.select<VpnProvider, bool>(
+                      (provider) => provider.isConnected);
+                  var isConnecting = context.select<VpnProvider, bool>(
+                      (provider) => provider.isConnecting);
+
+                  return RichText(
+                    text: TextSpan(
+                      children: <InlineSpan>[
+                        TextSpan(
+                          text: "Status : ",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14.0,
+                            fontFamily: "Montserrat",
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
-                      ),
-                      TextSpan(
-                        text: status.isConnecting
-                            ? "Connecting"
-                            : status.isConnected
-                                ? "Connected"
-                                : "Not Connected",
-                        style: TextStyle(
-                          color: status.isConnecting
-                              ? Colors.yellow
-                              : status.isConnected
-                                  ? Colors.green
-                                  : Colors.red,
-                          fontSize: 14.0,
-                          fontFamily: "Montserrat",
-                          fontWeight: FontWeight.w600,
+                        TextSpan(
+                          text: isConnecting
+                              ? "Connecting"
+                              : isConnected
+                                  ? "Connected"
+                                  : "Not Connected",
+                          style: TextStyle(
+                            color: isConnecting
+                                ? Colors.yellow
+                                : isConnected
+                                    ? Colors.green
+                                    : Colors.red,
+                            fontSize: 14.0,
+                            fontFamily: "Montserrat",
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
+                      ],
+                    ),
+                  );
+                },
               ),
               SizedBox(height: 40.0),
-              Selector<VpnProvider, String>(
-                selector: (context, provider) => provider.connectionTime,
-                builder: (context, value, _) => Text(
-                  value,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 35.0,
-                    fontFamily: "Montserrat",
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+              Builder(
+                builder: (context) {
+                  var value = context.select<VpnProvider, String>(
+                      (provider) => provider.connectionTime);
+
+                  return Text(
+                    value,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 35.0,
+                      fontFamily: "Montserrat",
+                      fontWeight: FontWeight.w600,
+                    ),
+                  );
+                },
               ),
               SizedBox(height: 200.0),
             ],
@@ -278,13 +291,6 @@ class MainScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-class VpnConnectionStatus {
-  final bool isConnecting;
-  final bool isConnected;
-
-  VpnConnectionStatus({required this.isConnecting, required this.isConnected});
 }
 
 class ServerInfo {

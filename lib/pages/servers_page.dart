@@ -91,121 +91,8 @@ class ServersScreen extends StatelessWidget {
         ),
         body: TabBarView(
           children: <Widget>[
-            Center(
-              child: LocationTabBarView(),
-            ),
-            Selector<FavouriteServersProvider, DetailedServerInfo>(
-              selector: (context, provider) => DetailedServerInfo(
-                servers: provider.favourites,
-                flags: provider.flags,
-                serverStrength: provider.strengths,
-              ),
-              builder: (contxt, detailedServerInfo, _) {
-                if (detailedServerInfo.servers.isEmpty) {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Image.asset(
-                        "assets/images/favourites.png",
-                        height: 108.0,
-                      ),
-                      SizedBox(height: 24.0),
-                      Text(
-                        "No Favourites",
-                        style: TextStyle(
-                          fontSize: 17.0,
-                          color: Color(0XFF424262),
-                          fontFamily: "Montserrat",
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ],
-                  );
-                }
-
-                return AnimationLimiter(
-                  child: ListView.builder(
-                    padding: EdgeInsets.only(bottom: 10.0),
-                    itemExtent: 70.0,
-                    itemCount: detailedServerInfo.servers.length,
-                    itemBuilder: (contxt, index) {
-                      final server = detailedServerInfo.servers[index];
-                      final flag = detailedServerInfo.flags[index];
-                      final strength = detailedServerInfo.serverStrength[index];
-
-                      return AnimationConfiguration.staggeredList(
-                        position: index,
-                        child: SlideAnimation(
-                          horizontalOffset: -70.0,
-                          delay: Duration(milliseconds: 20),
-                          duration: Duration(milliseconds: 300),
-                          child: FadeInAnimation(
-                            duration: Duration(milliseconds: 300),
-                            delay: Duration(milliseconds: 20),
-                            child: Material(
-                              color: Colors.transparent,
-                              borderRadius: BorderRadius.zero,
-                              child: SizedBox(
-                                width: MediaQuery.sizeOf(context).width * 0.9,
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                    top: 6.0,
-                                    left: 18.0,
-                                    right: 18.0,
-                                  ),
-                                  child: ListTile(
-                                    dense: true,
-                                    onTap: () => context
-                                                .read<VpnProvider>()
-                                                .currentServer
-                                                .server ==
-                                            server
-                                        ? showConnectedToServerDialog(context)
-                                        : showConnectToServerDialog(
-                                            context,
-                                            server: server,
-                                            image: flag,
-                                          ),
-                                    tileColor: Color(0XFF1D2031),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(14.0),
-                                    ),
-                                    leading:
-                                        CircleAvatar(backgroundImage: flag),
-                                    title: Text(
-                                      server,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15.0,
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    subtitle: Text(
-                                      "IP - 127.123.21.12",
-                                      style: TextStyle(
-                                        color: Color(0XFF7C7F90),
-                                        fontSize: 12.0,
-                                        fontFamily: "Montserrat",
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                    ),
-                                    splashColor: Colors.transparent,
-                                    trailing:
-                                        Image(image: strength, height: 18.0),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                );
-              },
-            ),
+            LocationTabBarView(),
+            FavouritesTabBarView(),
           ],
         ),
       ),
@@ -331,14 +218,148 @@ class FavoriteButton extends StatelessWidget {
   }
 }
 
+class FavouritesTabBarView extends StatefulWidget {
+  const FavouritesTabBarView({super.key});
+
+  @override
+  State createState() {
+    return _FavouritesTabBarViewState();
+  }
+}
+
+class _FavouritesTabBarViewState extends State<FavouritesTabBarView>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+
+    return Selector<FavouriteServersProvider, DetailedServerInfo>(
+      selector: (context, provider) => DetailedServerInfo(
+        servers: provider.favourites,
+        flags: provider.flags,
+        serverStrength: provider.strengths,
+      ),
+      builder: (contxt, detailedServerInfo, _) {
+        if (detailedServerInfo.servers.isEmpty) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Image.asset(
+                "assets/images/favourites.png",
+                height: 108.0,
+              ),
+              SizedBox(height: 24.0),
+              Text(
+                "No Favourites",
+                style: TextStyle(
+                  fontSize: 17.0,
+                  color: Color(0XFF424262),
+                  fontFamily: "Montserrat",
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          );
+        }
+
+        return AnimationLimiter(
+          child: ListView.builder(
+            padding: EdgeInsets.only(bottom: 10.0),
+            itemExtent: 70.0,
+            itemCount: detailedServerInfo.servers.length,
+            itemBuilder: (contxt, index) {
+              final server = detailedServerInfo.servers[index];
+              final flag = detailedServerInfo.flags[index];
+              final strength = detailedServerInfo.serverStrength[index];
+
+              return AnimationConfiguration.staggeredList(
+                position: index,
+                child: SlideAnimation(
+                  horizontalOffset: -70.0,
+                  delay: Duration(milliseconds: 20),
+                  duration: Duration(milliseconds: 300),
+                  child: FadeInAnimation(
+                    duration: Duration(milliseconds: 300),
+                    delay: Duration(milliseconds: 20),
+                    child: Material(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.zero,
+                      child: SizedBox(
+                        width: MediaQuery.sizeOf(context).width * 0.9,
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            top: 6.0,
+                            left: 18.0,
+                            right: 18.0,
+                          ),
+                          child: ListTile(
+                            dense: true,
+                            onTap: () => context
+                                        .read<VpnProvider>()
+                                        .currentServer
+                                        .server ==
+                                    server
+                                ? showConnectedToServerDialog(context)
+                                : showConnectToServerDialog(
+                                    context,
+                                    server: server,
+                                    image: flag,
+                                  ),
+                            tileColor: Color(0XFF1D2031),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(14.0),
+                            ),
+                            leading: CircleAvatar(backgroundImage: flag),
+                            title: Text(
+                              server,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15.0,
+                                fontFamily: "Montserrat",
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            subtitle: Text(
+                              "IP - 127.123.21.12",
+                              style: TextStyle(
+                                color: Color(0XFF7C7F90),
+                                fontSize: 12.0,
+                                fontFamily: "Montserrat",
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            splashColor: Colors.transparent,
+                            trailing: Image(image: strength, height: 18.0),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  bool get wantKeepAlive => true;
+}
+
 class LocationTabBarView extends StatefulWidget {
   const LocationTabBarView({super.key});
 
   @override
-  State createState() => _LocationTabBarViewState();
+  State createState() {
+    return _LocationTabBarViewState();
+  }
 }
 
-class _LocationTabBarViewState extends State<LocationTabBarView> {
+class _LocationTabBarViewState extends State<LocationTabBarView>
+    with AutomaticKeepAliveClientMixin {
   final _servers = [
     "Singapore",
     "Netherlands",
@@ -383,6 +404,8 @@ class _LocationTabBarViewState extends State<LocationTabBarView> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return AnimationLimiter(
       child: ListView.builder(
         padding: EdgeInsets.only(bottom: 10.0),
@@ -415,6 +438,9 @@ class _LocationTabBarViewState extends State<LocationTabBarView> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
 
 void showConnectedToServerDialog(BuildContext context) {
