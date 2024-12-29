@@ -75,6 +75,7 @@ class MyApp extends StatelessWidget {
         }
       },
       theme: ThemeData(
+        useMaterial3: true,
         scaffoldBackgroundColor: Color(0XFF10172A),
         appBarTheme: AppBarTheme(backgroundColor: Colors.transparent),
       ),
