@@ -85,56 +85,54 @@ class LanguageSelectionScreen extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: AnimationLimiter(
-          child: Column(
-            children: AnimationConfiguration.toStaggeredList(
-              childAnimationBuilder: (widget) {
-                return SlideAnimation(
-                  delay: Duration(milliseconds: 20),
+        child: Column(
+          children: AnimationConfiguration.toStaggeredList(
+            childAnimationBuilder: (widget) {
+              return SlideAnimation(
+                delay: Duration(milliseconds: 20),
+                duration: Duration(milliseconds: 300),
+                horizontalOffset: -50.0,
+                child: FadeInAnimation(
+                  curve: Curves.linear,
                   duration: Duration(milliseconds: 300),
-                  horizontalOffset: -50.0,
-                  child: FadeInAnimation(
-                    curve: Curves.linear,
-                    duration: Duration(milliseconds: 300),
-                    delay: Duration(milliseconds: 20),
-                    child: widget,
-                  ),
-                );
-              },
-              children: <Widget>[
-                CustomListTile(
-                  text: "Urdu",
-                  radioValue: 0,
-                  backgroundImage:
-                      AssetImage("assets/images/pakistan_flag.png"),
+                  delay: Duration(milliseconds: 20),
+                  child: widget,
                 ),
-                SizedBox(height: 5.0),
-                CustomListTile(
-                  text: "English",
-                  radioValue: 1,
-                  backgroundImage: AssetImage("assets/images/UK_flag.png"),
-                ),
-                SizedBox(height: 5.0),
-                CustomListTile(
-                  text: "Spanish",
-                  radioValue: 2,
-                  backgroundImage: AssetImage("assets/images/spanish_flag.png"),
-                ),
-                SizedBox(height: 5.0),
-                CustomListTile(
-                  text: "Indonesian",
-                  radioValue: 3,
-                  backgroundImage:
-                      AssetImage("assets/images/indonesia_flag.png"),
-                ),
-                SizedBox(height: 5.0),
-                CustomListTile(
-                  text: "Chinese",
-                  radioValue: 4,
-                  backgroundImage: AssetImage("assets/images/china_flag.png"),
-                ),
-              ],
-            ),
+              );
+            },
+            children: <Widget>[
+              CustomListTile(
+                text: "Urdu",
+                radioValue: 0,
+                backgroundImage:
+                    AssetImage("assets/images/pakistan_flag.png"),
+              ),
+              SizedBox(height: 5.0),
+              CustomListTile(
+                text: "English",
+                radioValue: 1,
+                backgroundImage: AssetImage("assets/images/UK_flag.png"),
+              ),
+              SizedBox(height: 5.0),
+              CustomListTile(
+                text: "Spanish",
+                radioValue: 2,
+                backgroundImage: AssetImage("assets/images/spanish_flag.png"),
+              ),
+              SizedBox(height: 5.0),
+              CustomListTile(
+                text: "Indonesian",
+                radioValue: 3,
+                backgroundImage:
+                    AssetImage("assets/images/indonesia_flag.png"),
+              ),
+              SizedBox(height: 5.0),
+              CustomListTile(
+                text: "Chinese",
+                radioValue: 4,
+                backgroundImage: AssetImage("assets/images/china_flag.png"),
+              ),
+            ],
           ),
         ),
       ),
@@ -159,7 +157,7 @@ class CustomListTile extends StatelessWidget {
     return Selector<LanguagePageRadioProvider, int>(
       selector: (context, provider) => provider.selectedValue,
       builder: (contxt, value, _) => SizedBox(
-        width: MediaQuery.sizeOf(context).width * 0.9,
+        width: MediaQuery.sizeOf(contxt).width * 0.9,
         child: ListTile(
           onTap: () => contxt
               .read<LanguagePageRadioProvider>()

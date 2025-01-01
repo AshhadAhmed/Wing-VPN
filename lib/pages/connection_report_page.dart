@@ -25,25 +25,25 @@ class ConnectionReportScreen extends StatelessWidget {
           icon: Icon(Icons.west_rounded, color: Colors.white),
         ),
       ),
-      body: AnimationLimiter(
-        child: Column(
-          children: AnimationConfiguration.toStaggeredList(
-            childAnimationBuilder: (widget) {
-              return SlideAnimation(
-                delay: Duration(milliseconds: 20),
+      body: Column(
+        children: AnimationConfiguration.toStaggeredList(
+          childAnimationBuilder: (widget) {
+            return SlideAnimation(
+              delay: Duration(milliseconds: 20),
+              duration: Duration(milliseconds: 300),
+              horizontalOffset: -100.0,
+              child: FadeInAnimation(
+                curve: Curves.linear,
                 duration: Duration(milliseconds: 300),
-                horizontalOffset: -100.0,
-                child: FadeInAnimation(
-                  curve: Curves.linear,
-                  duration: Duration(milliseconds: 300),
-                  delay: Duration(milliseconds: 20),
-                  child: widget,
-                ),
-              );
-            },
-            children: <Widget>[
-              Container(
-                width: MediaQuery.sizeOf(context).width * 0.9,
+                delay: Duration(milliseconds: 20),
+                child: widget,
+              ),
+            );
+          },
+          children: <Widget>[
+            Builder(
+              builder: (contxt) => Container(
+                width: MediaQuery.sizeOf(contxt).width * 0.9,
                 height: 123.0,
                 decoration: BoxDecoration(
                   color: Color(0XFF1D2031),
@@ -76,30 +76,58 @@ class ConnectionReportScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 5.0),
-              ListTile(
-                dense: true,
-                leading: Container(
-                  width: 35.0,
-                  height: 35.0,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Colors.white),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "IP",
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        color: Colors.white,
-                        fontFamily: "Montserrat",
-                        fontWeight: FontWeight.w500,
-                      ),
+            ),
+            SizedBox(height: 5.0),
+            ListTile(
+              dense: true,
+              leading: Container(
+                width: 35.0,
+                height: 35.0,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.white),
+                ),
+                child: Center(
+                  child: Text(
+                    "IP",
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      color: Colors.white,
+                      fontFamily: "Montserrat",
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
+              ),
+              title: Text(
+                "IP address",
+                style: TextStyle(
+                  color: Color(0XFF7C7F90),
+                  fontSize: 11.0,
+                  fontFamily: "Montserrat",
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              subtitle: Text(
+                "127.123.21.12",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.0,
+                  fontFamily: "Montserrat",
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+            Selector<VpnProvider, String>(
+              selector: (context, provider) => provider.currentServer.server!,
+              builder: (contxt, value, _) => ListTile(
+                dense: true,
+                leading: Image.asset(
+                  "assets/images/global.png",
+                  height: 35.0,
+                ),
                 title: Text(
-                  "IP address",
+                  "Current server",
                   style: TextStyle(
                     color: Color(0XFF7C7F90),
                     fontSize: 11.0,
@@ -108,7 +136,7 @@ class ConnectionReportScreen extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  "127.123.21.12",
+                  value,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16.0,
@@ -117,36 +145,8 @@ class ConnectionReportScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              Selector<VpnProvider, String>(
-                selector: (context, provider) => provider.currentServer.server!,
-                builder: (contxt, value, _) => ListTile(
-                  dense: true,
-                  leading: Image.asset(
-                    "assets/images/global.png",
-                    height: 35.0,
-                  ),
-                  title: Text(
-                    "Current server",
-                    style: TextStyle(
-                      color: Color(0XFF7C7F90),
-                      fontSize: 11.0,
-                      fontFamily: "Montserrat",
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  subtitle: Text(
-                    value,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.0,
-                      fontFamily: "Montserrat",
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

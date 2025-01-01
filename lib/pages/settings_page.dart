@@ -26,69 +26,67 @@ class SettingsScreen extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: AnimationLimiter(
-          child: Column(
-            children: AnimationConfiguration.toStaggeredList(
-              childAnimationBuilder: (widget) => SlideAnimation(
-                delay: Duration(milliseconds: 20),
+        child: Column(
+          children: AnimationConfiguration.toStaggeredList(
+            childAnimationBuilder: (widget) => SlideAnimation(
+              delay: Duration(milliseconds: 20),
+              duration: Duration(milliseconds: 300),
+              horizontalOffset: -50.0,
+              child: FadeInAnimation(
+                curve: Curves.linear,
                 duration: Duration(milliseconds: 300),
-                horizontalOffset: -50.0,
-                child: FadeInAnimation(
-                  curve: Curves.linear,
-                  duration: Duration(milliseconds: 300),
-                  delay: Duration(milliseconds: 20),
-                  child: widget,
+                delay: Duration(milliseconds: 20),
+                child: widget,
+              ),
+            ),
+            children: <Widget>[
+              CustomListTile(
+                text: "Server list",
+                widget: Image.asset(
+                  "assets/images/check_list.png",
+                  height: 18.0,
+                ),
+                onTap: () => Navigator.pushNamed(context, "/servers"),
+              ),
+              SizedBox(height: 5.0),
+              CustomListTile(
+                onTap: () {},
+                text: "Private browser",
+                widget: Image.asset(
+                  "assets/images/global_search.png",
+                  height: 18.0,
                 ),
               ),
-              children: <Widget>[
-                CustomListTile(
-                  text: "Server list",
-                  widget: Image.asset(
-                    "assets/images/check_list.png",
-                    height: 18.0,
-                  ),
-                  onTap: () => Navigator.pushNamed(context, "/servers"),
+              SizedBox(height: 5.0),
+              CustomListTile(
+                text: "Language",
+                widget: Image.asset(
+                  "assets/images/translate.png",
+                  height: 18.0,
                 ),
-                SizedBox(height: 5.0),
-                CustomListTile(
-                  onTap: () {},
-                  text: "Private browser",
-                  widget: Image.asset(
-                    "assets/images/global_search.png",
-                    height: 18.0,
-                  ),
+                onTap: () => Navigator.pushNamed(context, "/language"),
+              ),
+              SizedBox(height: 5.0),
+              CustomListTile(
+                onTap: () {},
+                text: "Privacy policy",
+                widget: Icon(
+                  Icons.shield_sharp,
+                  size: 19.0,
+                  color: Colors.white,
                 ),
-                SizedBox(height: 5.0),
-                CustomListTile(
-                  text: "Language",
-                  widget: Image.asset(
-                    "assets/images/translate.png",
-                    height: 18.0,
-                  ),
-                  onTap: () => Navigator.pushNamed(context, "/language"),
+              ),
+              SizedBox(height: 5.0),
+              CustomListTile(
+                text: "Version",
+                widget: Icon(
+                  Icons.info_rounded,
+                  size: 18.0,
+                  color: Colors.white,
                 ),
-                SizedBox(height: 5.0),
-                CustomListTile(
-                  onTap: () {},
-                  text: "Privacy policy",
-                  widget: Icon(
-                    Icons.shield_sharp,
-                    size: 19.0,
-                    color: Colors.white,
-                  ),
-                ),
-                SizedBox(height: 5.0),
-                CustomListTile(
-                  text: "Version",
-                  widget: Icon(
-                    Icons.info_rounded,
-                    size: 18.0,
-                    color: Colors.white,
-                  ),
-                  onTap: () => Navigator.pushNamed(context, "/version"),
-                ),
-              ],
-            ),
+                onTap: () => Navigator.pushNamed(context, "/version"),
+              ),
+            ],
           ),
         ),
       ),

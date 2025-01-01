@@ -69,8 +69,8 @@ class MainScreen extends StatelessWidget {
               ),
               SizedBox(height: 20.0),
               Builder(
-                builder: (context) {
-                  var serverInfo = context.select<VpnProvider, ServerInfo>(
+                builder: (contxt) {
+                  var serverInfo = contxt.select<VpnProvider, ServerInfo>(
                     (provider) => ServerInfo(
                       server: provider.currentServer.server,
                       flag: provider.currentServer.flag,
@@ -78,9 +78,9 @@ class MainScreen extends StatelessWidget {
                   );
 
                   return SizedBox(
-                    width: MediaQuery.sizeOf(context).width * 0.9,
+                    width: MediaQuery.sizeOf(contxt).width * 0.9,
                     child: ListTile(
-                      onTap: () => Navigator.pushNamed(context, "/connection"),
+                      onTap: () => Navigator.pushNamed(contxt, "/connection"),
                       tileColor: Color(0XFF1D2031),
                       leading: CircleAvatar(
                         radius: 19.0,
@@ -120,14 +120,14 @@ class MainScreen extends StatelessWidget {
               ),
               SizedBox(height: 52.0),
               Builder(
-                builder: (context) {
-                  var isConnected = context.select<VpnProvider, bool>(
+                builder: (contxt) {
+                  var isConnected = contxt.select<VpnProvider, bool>(
                       (provider) => provider.isConnected);
-                  var isConnecting = context.select<VpnProvider, bool>(
+                  var isConnecting = contxt.select<VpnProvider, bool>(
                       (provider) => provider.isConnecting);
 
                   return GestureDetector(
-                    onTap: context.read<VpnProvider>().enableConnection,
+                    onTap: contxt.read<VpnProvider>().enableConnection,
                     child: AnimatedSwitcher(
                       duration: Duration(milliseconds: 500),
                       child: isConnecting
@@ -227,10 +227,10 @@ class MainScreen extends StatelessWidget {
               ),
               SizedBox(height: 40.0),
               Builder(
-                builder: (context) {
-                  var isConnected = context.select<VpnProvider, bool>(
+                builder: (contxt) {
+                  var isConnected = contxt.select<VpnProvider, bool>(
                       (provider) => provider.isConnected);
-                  var isConnecting = context.select<VpnProvider, bool>(
+                  var isConnecting = contxt.select<VpnProvider, bool>(
                       (provider) => provider.isConnecting);
 
                   return RichText(
@@ -269,8 +269,8 @@ class MainScreen extends StatelessWidget {
               ),
               SizedBox(height: 40.0),
               Builder(
-                builder: (context) {
-                  var value = context.select<VpnProvider, String>(
+                builder: (contxt) {
+                  var value = contxt.select<VpnProvider, String>(
                       (provider) => provider.connectionTime);
 
                   return Text(

@@ -13,7 +13,6 @@ import 'package:wing_vpn/pages/servers_page.dart';
 import 'package:wing_vpn/pages/settings_page.dart';
 import 'package:wing_vpn/pages/splash_screen.dart';
 import 'package:wing_vpn/pages/version_page.dart';
-import 'package:wing_vpn/providers/check_box_provider.dart';
 import 'package:wing_vpn/providers/favourite_servers_provider.dart';
 import 'package:wing_vpn/providers/language_page_radio_provider.dart';
 import 'package:wing_vpn/providers/linear_progress_provider.dart';
@@ -28,7 +27,6 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => LinearProgressProvider()),
         ChangeNotifierProvider(create: (_) => VpnProvider()),
-        ChangeNotifierProvider(create: (_) => CheckBoxProvider()),
         ChangeNotifierProvider(create: (_) => PremiumPageRadioProvider()),
         ChangeNotifierProvider(create: (_) => FavouriteServersProvider()),
         ChangeNotifierProvider(create: (_) => LanguagePageRadioProvider()),

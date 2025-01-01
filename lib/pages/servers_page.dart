@@ -31,60 +31,62 @@ class ServersScreen extends StatelessWidget {
           ),
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(40.0),
-            child: Container(
-              width: MediaQuery.sizeOf(context).width * 0.9,
-              padding: EdgeInsets.only(
-                left: 5.0,
-                right: 5.0,
-                top: 4.0,
-                bottom: 4.0,
-              ),
-              decoration: BoxDecoration(
-                color: Color(0XFF1D2031),
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-              child: TabBar(
-                dividerHeight: 0.0,
-                indicator: BoxDecoration(
-                  color: Color(0XFF337BF3),
-                  borderRadius: BorderRadius.circular(26.0),
+            child: Builder(
+              builder: (contxt) => Container(
+                width: MediaQuery.sizeOf(contxt).width * 0.9,
+                padding: EdgeInsets.only(
+                  left: 5.0,
+                  right: 5.0,
+                  top: 4.0,
+                  bottom: 4.0,
                 ),
-                labelColor: Colors.white,
-                labelStyle: TextStyle(
-                  color: Colors.white,
-                  fontSize: 12.0,
-                  letterSpacing: 0.2,
-                  fontFamily: "Montserrat",
-                  fontWeight: FontWeight.w600,
+                decoration: BoxDecoration(
+                  color: Color(0XFF1D2031),
+                  borderRadius: BorderRadius.circular(30.0),
                 ),
-                tabs: <Widget>[
-                  Tab(
-                    height: 32.0,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Icon(Icons.location_on_rounded),
-                        SizedBox(width: 5.0),
-                        Text("Location")
-                      ],
-                    ),
+                child: TabBar(
+                  dividerHeight: 0.0,
+                  indicator: BoxDecoration(
+                    color: Color(0XFF337BF3),
+                    borderRadius: BorderRadius.circular(26.0),
                   ),
-                  Tab(
-                    height: 32.0,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Icon(CupertinoIcons.heart_solid),
-                        SizedBox(width: 5.0),
-                        Text("Favourites")
-                      ],
-                    ),
+                  labelColor: Colors.white,
+                  labelStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12.0,
+                    letterSpacing: 0.2,
+                    fontFamily: "Montserrat",
+                    fontWeight: FontWeight.w600,
                   ),
-                ],
-                indicatorSize: TabBarIndicatorSize.tab,
-                unselectedLabelColor: Color(0XFF7C7F90),
+                  tabs: <Widget>[
+                    Tab(
+                      height: 32.0,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Icon(Icons.location_on_rounded),
+                          SizedBox(width: 5.0),
+                          Text("Location")
+                        ],
+                      ),
+                    ),
+                    Tab(
+                      height: 32.0,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Icon(CupertinoIcons.heart_solid),
+                          SizedBox(width: 5.0),
+                          Text("Favourites")
+                        ],
+                      ),
+                    ),
+                  ],
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  unselectedLabelColor: Color(0XFF7C7F90),
+                ),
               ),
             ),
           ),
@@ -286,7 +288,7 @@ class _FavouritesTabBarViewState extends State<FavouritesTabBarView>
                       color: Colors.transparent,
                       borderRadius: BorderRadius.zero,
                       child: SizedBox(
-                        width: MediaQuery.sizeOf(context).width * 0.9,
+                        width: MediaQuery.sizeOf(contxt).width * 0.9,
                         child: Padding(
                           padding: EdgeInsets.only(
                             top: 6.0,
@@ -295,14 +297,14 @@ class _FavouritesTabBarViewState extends State<FavouritesTabBarView>
                           ),
                           child: ListTile(
                             dense: true,
-                            onTap: () => context
+                            onTap: () => contxt
                                         .read<VpnProvider>()
                                         .currentServer
                                         .server ==
                                     server
-                                ? showConnectedToServerDialog(context)
+                                ? showConnectedToServerDialog(contxt)
                                 : showConnectToServerDialog(
-                                    context,
+                                    contxt,
                                     server: server,
                                     image: flag,
                                   ),
@@ -560,7 +562,7 @@ void showConnectToServerDialog(
           ),
           TextButton(
             onPressed: () {
-              context
+              contxt
                   .read<VpnProvider>()
                   .setServer(server, image)
                   .disableConnection();
