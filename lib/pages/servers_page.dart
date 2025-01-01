@@ -265,83 +265,81 @@ class _FavouritesTabBarViewState extends State<FavouritesTabBarView>
           );
         }
 
-        return AnimationLimiter(
-          child: ListView.builder(
-            padding: EdgeInsets.only(bottom: 10.0),
-            itemExtent: 70.0,
-            itemCount: detailedServerInfo.servers.length,
-            itemBuilder: (contxt, index) {
-              final server = detailedServerInfo.servers[index];
-              final flag = detailedServerInfo.flags[index];
-              final strength = detailedServerInfo.serverStrength[index];
-
-              return AnimationConfiguration.staggeredList(
-                position: index,
-                child: SlideAnimation(
-                  horizontalOffset: -70.0,
-                  delay: Duration(milliseconds: 20),
+        return ListView.builder(
+          padding: EdgeInsets.only(bottom: 10.0),
+          itemExtent: 70.0,
+          itemCount: detailedServerInfo.servers.length,
+          itemBuilder: (contxt, index) {
+            final server = detailedServerInfo.servers[index];
+            final flag = detailedServerInfo.flags[index];
+            final strength = detailedServerInfo.serverStrength[index];
+        
+            return AnimationConfiguration.staggeredList(
+              position: index,
+              child: SlideAnimation(
+                horizontalOffset: -70.0,
+                delay: Duration(milliseconds: 20),
+                duration: Duration(milliseconds: 300),
+                child: FadeInAnimation(
                   duration: Duration(milliseconds: 300),
-                  child: FadeInAnimation(
-                    duration: Duration(milliseconds: 300),
-                    delay: Duration(milliseconds: 20),
-                    child: Material(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.zero,
-                      child: SizedBox(
-                        width: MediaQuery.sizeOf(contxt).width * 0.9,
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                            top: 6.0,
-                            left: 18.0,
-                            right: 18.0,
+                  delay: Duration(milliseconds: 20),
+                  child: Material(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.zero,
+                    child: SizedBox(
+                      width: MediaQuery.sizeOf(contxt).width * 0.9,
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          top: 6.0,
+                          left: 18.0,
+                          right: 18.0,
+                        ),
+                        child: ListTile(
+                          dense: true,
+                          onTap: () => contxt
+                                      .read<VpnProvider>()
+                                      .currentServer
+                                      .server ==
+                                  server
+                              ? showConnectedToServerDialog(contxt)
+                              : showConnectToServerDialog(
+                                  contxt,
+                                  server: server,
+                                  image: flag,
+                                ),
+                          tileColor: Color(0XFF1D2031),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14.0),
                           ),
-                          child: ListTile(
-                            dense: true,
-                            onTap: () => contxt
-                                        .read<VpnProvider>()
-                                        .currentServer
-                                        .server ==
-                                    server
-                                ? showConnectedToServerDialog(contxt)
-                                : showConnectToServerDialog(
-                                    contxt,
-                                    server: server,
-                                    image: flag,
-                                  ),
-                            tileColor: Color(0XFF1D2031),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14.0),
+                          leading: CircleAvatar(backgroundImage: flag),
+                          title: Text(
+                            server,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15.0,
+                              fontFamily: "Montserrat",
+                              fontWeight: FontWeight.w500,
                             ),
-                            leading: CircleAvatar(backgroundImage: flag),
-                            title: Text(
-                              server,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15.0,
-                                fontFamily: "Montserrat",
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            subtitle: Text(
-                              "IP - 127.123.21.12",
-                              style: TextStyle(
-                                color: Color(0XFF7C7F90),
-                                fontSize: 12.0,
-                                fontFamily: "Montserrat",
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            splashColor: Colors.transparent,
-                            trailing: Image(image: strength, height: 18.0),
                           ),
+                          subtitle: Text(
+                            "IP - 127.123.21.12",
+                            style: TextStyle(
+                              color: Color(0XFF7C7F90),
+                              fontSize: 12.0,
+                              fontFamily: "Montserrat",
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          splashColor: Colors.transparent,
+                          trailing: Image(image: strength, height: 18.0),
                         ),
                       ),
                     ),
                   ),
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         );
       },
     );
@@ -408,31 +406,29 @@ class _LocationTabBarViewState extends State<LocationTabBarView>
   Widget build(BuildContext context) {
     super.build(context);
 
-    return AnimationLimiter(
-      child: ListView.builder(
-        padding: EdgeInsets.only(bottom: 10.0),
-        itemExtent: 70.0,
-        itemCount: _servers.length,
-        itemBuilder: (context, index) => AnimationConfiguration.staggeredList(
-          position: index,
-          child: SlideAnimation(
-            horizontalOffset: -70.0,
-            delay: Duration(milliseconds: 20),
+    return ListView.builder(
+      padding: EdgeInsets.only(bottom: 10.0),
+      itemExtent: 70.0,
+      itemCount: _servers.length,
+      itemBuilder: (context, index) => AnimationConfiguration.staggeredList(
+        position: index,
+        child: SlideAnimation(
+          horizontalOffset: -70.0,
+          delay: Duration(milliseconds: 20),
+          duration: Duration(milliseconds: 300),
+          child: FadeInAnimation(
             duration: Duration(milliseconds: 300),
-            child: FadeInAnimation(
-              duration: Duration(milliseconds: 300),
-              delay: Duration(milliseconds: 20),
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  top: 6.0,
-                  left: 18.0,
-                  right: 18.0,
-                ),
-                child: CustomListTile(
-                  titleText: _servers[index],
-                  backgroundImage: _countryFlags[index],
-                  serverStrength: _serverStrengths[index],
-                ),
+            delay: Duration(milliseconds: 20),
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top: 6.0,
+                left: 18.0,
+                right: 18.0,
+              ),
+              child: CustomListTile(
+                titleText: _servers[index],
+                backgroundImage: _countryFlags[index],
+                serverStrength: _serverStrengths[index],
               ),
             ),
           ),
