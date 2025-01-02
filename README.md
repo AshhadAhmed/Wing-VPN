@@ -1,6 +1,6 @@
 # Wing-VPN
 
-**Wing-VPN UI** is a Flutter-based (Android) UI design created from Figma. It is a simple user interface for a VPN application. Note this is just a UI and does not include full functionality.
+**Wing-VPN UI** is a Flutter-based (Android/Web) UI design created from Figma. It is a simple user interface for a VPN application. Note this is just a UI and does not include full functionality.
 
 ## Features
 - Modern, user-friendly design created in Flutter.
