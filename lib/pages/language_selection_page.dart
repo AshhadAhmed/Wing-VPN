@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:provider/provider.dart';
@@ -35,10 +36,10 @@ class LanguageSelectionScreen extends StatelessWidget {
                     dismissDirection: DismissDirection.horizontal,
                     behavior: SnackBarBehavior.floating,
                     padding: EdgeInsets.only(
-                      bottom: 2.0,
-                      top: 2.0,
-                      left: 16.0,
+                      bottom: !kIsWeb ? 2.0 : 8.0,
+                      top: !kIsWeb ? 2.0 : 8.0,
                       right: 2.0,
+                      left: 16.0,
                     ),
                     content: Text(
                       "Language updated",
@@ -104,8 +105,7 @@ class LanguageSelectionScreen extends StatelessWidget {
               CustomListTile(
                 text: "Urdu",
                 radioValue: 0,
-                backgroundImage:
-                    AssetImage("assets/images/pakistan_flag.png"),
+                backgroundImage: AssetImage("assets/images/pakistan_flag.png"),
               ),
               SizedBox(height: 5.0),
               CustomListTile(
@@ -123,8 +123,7 @@ class LanguageSelectionScreen extends StatelessWidget {
               CustomListTile(
                 text: "Indonesian",
                 radioValue: 3,
-                backgroundImage:
-                    AssetImage("assets/images/indonesia_flag.png"),
+                backgroundImage: AssetImage("assets/images/indonesia_flag.png"),
               ),
               SizedBox(height: 5.0),
               CustomListTile(

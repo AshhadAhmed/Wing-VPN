@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +21,7 @@ import 'package:wing_vpn/providers/premium_page_radio_provider.dart';
 import 'package:wing_vpn/providers/vpn_provider.dart';
 
 void main() async {
-  if (Platform.isAndroid) {
+  if (defaultTargetPlatform == TargetPlatform.android || kIsWeb) {
     await GetStorage.init();
 
     runApp(MultiProvider(
@@ -34,6 +35,7 @@ void main() async {
       child: const MyApp(),
     ));
   } else {
+    debugPrint("Unsupported Platform!");
     exit(0);
   }
 }

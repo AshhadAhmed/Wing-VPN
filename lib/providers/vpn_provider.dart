@@ -8,8 +8,7 @@ import '../pages/main_page.dart';
 
 class VpnProvider with ChangeNotifier {
   Timer? _timer;
-  bool _isConnected = false;
-  bool _isConnecting = false;
+  bool _isConnected = false, _isConnecting = false;
   Duration _connectionDuration = Duration.zero;
   ServerInfo _currentServer = ServerInfo(
     server: "United States",
@@ -19,7 +18,7 @@ class VpnProvider with ChangeNotifier {
   bool get isConnected => _isConnected;
   bool get isConnecting => _isConnecting;
   String get connectionTime => _formatDuration(_connectionDuration);
-  ServerInfo get currentServer => _currentServer; 
+  ServerInfo get currentServer => _currentServer;
 
   void enableConnection() {
     if (!_isConnected) {
@@ -39,7 +38,7 @@ class VpnProvider with ChangeNotifier {
   VpnProvider setServer(String server, ImageProvider? image) {
     _currentServer = ServerInfo(server: server, flag: image);
     notifyListeners();
-    
+
     return this;
   }
 

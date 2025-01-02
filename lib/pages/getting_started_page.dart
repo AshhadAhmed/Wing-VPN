@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_final_fields
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get_storage/get_storage.dart';
@@ -67,8 +68,10 @@ class GettingStartedScreen extends StatelessWidget {
                         builder: (contxt) => SizedBox(
                           width: MediaQuery.orientationOf(contxt) ==
                                   Orientation.portrait
-                              ? 15.0
-                              : 30.0,
+                              ? !kIsWeb
+                                  ? 15.0
+                                  : 30.0
+                              : 35.0,
                         ),
                       ),
                       Selector<CheckBoxProvider, bool>(
@@ -81,8 +84,9 @@ class GettingStartedScreen extends StatelessWidget {
                             activeColor: Color(0XFF2A73E7),
                             side: BorderSide(color: Colors.white),
                             shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5.0)),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(5.0),
+                              ),
                             ),
                           ),
                         ),
@@ -99,6 +103,7 @@ class GettingStartedScreen extends StatelessWidget {
                                 fontSize: 12.93,
                                 fontFamily: "Montserrat",
                                 fontWeight: FontWeight.w300,
+                                color: Colors.white,
                               ),
                             ),
                             TextSpan(
@@ -106,6 +111,7 @@ class GettingStartedScreen extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 12.93,
                                 fontFamily: "Montserrat",
+                                color: Colors.white,
                                 decoration: TextDecoration.underline,
                                 fontWeight: FontWeight.w600,
                                 decorationColor: Colors.white,
@@ -117,6 +123,7 @@ class GettingStartedScreen extends StatelessWidget {
                                 fontSize: 12.93,
                                 fontFamily: "Montserrat",
                                 fontWeight: FontWeight.w300,
+                                color: Colors.white,
                               ),
                             ),
                             TextSpan(
@@ -125,6 +132,7 @@ class GettingStartedScreen extends StatelessWidget {
                                 fontSize: 12.93,
                                 fontFamily: "Montserrat",
                                 decoration: TextDecoration.underline,
+                                color: Colors.white,
                                 fontWeight: FontWeight.w600,
                                 decorationColor: Colors.white,
                               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:provider/provider.dart';
@@ -26,6 +27,7 @@ class ServersScreen extends StatelessWidget {
           ),
           backgroundColor: Colors.transparent,
           leading: IconButton(
+            tooltip: "Back",
             onPressed: () => Navigator.pop(context),
             icon: Icon(Icons.west_rounded, color: Colors.white),
           ),
@@ -273,7 +275,7 @@ class _FavouritesTabBarViewState extends State<FavouritesTabBarView>
             final server = detailedServerInfo.servers[index];
             final flag = detailedServerInfo.flags[index];
             final strength = detailedServerInfo.serverStrength[index];
-        
+
             return AnimationConfiguration.staggeredList(
               position: index,
               child: SlideAnimation(
@@ -290,23 +292,21 @@ class _FavouritesTabBarViewState extends State<FavouritesTabBarView>
                       width: MediaQuery.sizeOf(contxt).width * 0.9,
                       child: Padding(
                         padding: EdgeInsets.only(
-                          top: 6.0,
+                          top: kIsWeb ? 15.0 : 6.0,
                           left: 18.0,
                           right: 18.0,
                         ),
                         child: ListTile(
                           dense: true,
-                          onTap: () => contxt
-                                      .read<VpnProvider>()
-                                      .currentServer
-                                      .server ==
-                                  server
-                              ? showConnectedToServerDialog(contxt)
-                              : showConnectToServerDialog(
-                                  contxt,
-                                  server: server,
-                                  image: flag,
-                                ),
+                          onTap: () =>
+                              contxt.read<VpnProvider>().currentServer.server ==
+                                      server
+                                  ? showConnectedToServerDialog(contxt)
+                                  : showConnectToServerDialog(
+                                      contxt,
+                                      server: server,
+                                      image: flag,
+                                    ),
                           tileColor: Color(0XFF1D2031),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(14.0),
@@ -421,7 +421,7 @@ class _LocationTabBarViewState extends State<LocationTabBarView>
             delay: Duration(milliseconds: 20),
             child: Padding(
               padding: const EdgeInsets.only(
-                top: 6.0,
+                top: kIsWeb ? 15.0 : 6.0,
                 left: 18.0,
                 right: 18.0,
               ),
@@ -569,10 +569,10 @@ void showConnectToServerDialog(
                 SnackBar(
                   dismissDirection: DismissDirection.horizontal,
                   padding: EdgeInsets.only(
-                    bottom: 2.0,
-                    top: 2.0,
-                    left: 15.0,
+                    bottom: !kIsWeb ? 2.0 : 8.0,
+                    top: !kIsWeb ? 2.0 : 8.0,
                     right: 5.0,
+                    left: 15.0,
                   ),
                   behavior: SnackBarBehavior.floating,
                   content: Text(

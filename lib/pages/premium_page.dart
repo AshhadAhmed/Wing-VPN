@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:lottie/lottie.dart';
@@ -224,6 +225,7 @@ class PremiumScreen extends StatelessWidget {
                   ),
                 ],
               ),
+              SizedBox(height: 10.0),
             ],
           ),
         ),
@@ -271,7 +273,7 @@ class CustomListTile extends StatelessWidget {
           ),
           splashColor: Colors.transparent,
           contentPadding: EdgeInsets.only(
-            top: 5.0,
+            top: !kIsWeb ? 5.0 : 10.0,
             left: 24.0,
             right: 24.0,
           ),

@@ -19,6 +19,7 @@ class MainScreen extends StatelessWidget {
         ),
         actions: <Widget>[
           IconButton(
+            tooltip: "Premium",
             onPressed: () => Navigator.pushNamed(context, "/premium"),
             icon: Lottie.asset(
               "assets/animations/crown.json",
