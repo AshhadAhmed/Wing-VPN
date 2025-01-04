@@ -16,7 +16,7 @@
 - `flutter_staggered_animations`: For animations in the UI.
 - `loading_animation_widget`: To add loading animations.
 - `flutter_native_splash`: For adding splash screens.
-- `go_router`: A declarative router for Flutter
+- `go_router`: A declarative router for Flutter.
 
 ## Setup
 
