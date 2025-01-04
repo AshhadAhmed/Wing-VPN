@@ -8,14 +8,15 @@
 - Staggered animations for UI elements.
   
 ## Packages used:
-- `cupertino_icons`: For iOS-style icons.
-- `provider`: For state management.
+- `cupertino_icons`: Icons for iOS style applications.
+- `provider`: A wrapper around InheritedWidget to make them easier to use and more reusable.
 - `lottie`: For integrating Lottie animations.
-- `get_storage`: For easy and persistent local storage.
+- `get_storage`: A fast, extra light and synchronous key-value storage written entirely in Dart.
 - `flutter_launcher_icons`: To customize app icon.
 - `flutter_staggered_animations`: For animations in the UI.
 - `loading_animation_widget`: To add loading animations.
 - `flutter_native_splash`: For adding splash screens.
+- `go_router`: A declarative router for Flutter
 
 ## Setup
 
@@ -27,5 +28,6 @@ To get started with this project, you need to have Flutter installed on your sys
    git clone https://github.com/AshhadAhmed/Wing-VPN.git
 
 2. Navigate to the directory: 
-   ```bash
+   ```sh
    cd Wing-VPN
+   ```
