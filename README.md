@@ -28,6 +28,14 @@ To get started with this project, you need to have Flutter installed on your sys
    git clone https://github.com/AshhadAhmed/Wing-VPN.git
 
 2. Navigate to the directory: 
-   ```sh
+   ```bash
    cd Wing-VPN
-   ```
+
+3. Install dependencies:
+    ```bash
+    flutter pub get
+
+4. Run the app:
+    ```bash
+    flutter run
+    
