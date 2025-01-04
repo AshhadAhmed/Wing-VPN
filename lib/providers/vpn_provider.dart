@@ -4,7 +4,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../pages/main_page.dart';
+import '../views/main_page.dart';
 
 class VpnProvider with ChangeNotifier {
   Timer? _timer;

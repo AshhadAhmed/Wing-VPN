@@ -41,6 +41,7 @@ dependencies:
   flutter_staggered_animations: ^1.1.1
   loading_animation_widget: ^1.3.0
   flutter_native_splash: ^2.4.3
+  go_router: ^14.6.2
 
 dev_dependencies:
   flutter_test:
@@ -74,6 +75,7 @@ flutter:
     - assets/images/spanish_flag.png
     - assets/images/china_flag.png
     - assets/images/singapore_flag.png
+    - assets/images/404.png
     - assets/images/pakistan_flag.png
     - assets/images/canada_flag.png
     - assets/images/france_flag.png
@@ -122,6 +124,10 @@ flutter:
         - asset: assets/fonts/Montserrat-SemiBold.ttf
           weight: 600
         - asset: assets/fonts/Montserrat-Bold.ttf
+          weight: 700
+    - family: Nunito
+      fonts:
+        - asset: assets/fonts/Nunito-Bold.ttf
           weight: 700
     - family: MontserratAlternates
       fonts:
