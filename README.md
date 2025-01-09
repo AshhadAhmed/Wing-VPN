@@ -1,21 +1,21 @@
 # Wing-VPN
 
-**Wing-VPN UI** is a Flutter-based (Android) UI design created from Figma. It is a simple user interface for a VPN application. Note this is just a UI and does not include full functionality.
+**Wing-VPN UI** is a Flutter-based (Android) UI design inspired by a modern VPN application. This is a **user interface only** project, created from a Figma design, and does not include full VPN functionality.
 
 ## Features
-- Modern, user-friendly design created in Flutter.
-- Persistent data storage using GetStorage for user preferences.
-- Staggered animations for UI elements.
+- **Modern Design**: A sleek, user-friendly interface created using Flutter.
+- **Persistent Storage**: GetStorage is used to save user preferences.
+- **Staggered Animations**: Smooth animations for an enhanced user experience.
   
 ## Packages used:
-- `cupertino_icons`: Icons for iOS style applications.
-- `provider`: A wrapper around InheritedWidget to make them easier to use and more reusable.
-- `lottie`: For integrating Lottie animations.
-- `get_storage`: A fast, extra light and synchronous key-value storage written entirely in Dart.
-- `flutter_launcher_icons`: To customize app icon.
-- `flutter_staggered_animations`: For animations in the UI.
-- `loading_animation_widget`: To add loading animations.
-- `flutter_native_splash`: For adding splash screens.
+- `cupertino_icons`: iOS-style icons.
+- `provider`: Simplifies state management.
+- `lottie`: Integrates Lottie animations seamlessly.
+- `get_storage`: A fast and lightweight key-value storage in Dart.
+- `flutter_launcher_icons`: Customizes the app icon.
+- `flutter_staggered_animations`: Adds staggered animations to UI elements.
+- `loading_animation_widget`: Provides attractive loading animations.
+- `flutter_native_splash`: Easily adds splash screens.
 - `go_router`: A declarative router for Flutter.
 
 ## Setup
