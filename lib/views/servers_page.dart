@@ -128,9 +128,14 @@ class CustomListTile extends StatelessWidget {
       width: MediaQuery.sizeOf(context).width * 0.9,
       child: Material(
         color: Colors.transparent,
-        borderRadius: BorderRadius.zero,
+        borderRadius: BorderRadius.circular(14.0),
         child: ListTile(
           dense: true,
+          contentPadding: EdgeInsets.only(
+            top: kIsWeb ? 5.0 : 0.0,
+            left: 18.0,
+            right: 18.0,
+          ),
           onTap: () =>
               context.read<VpnProvider>().currentServer.server == titleText
                   ? showConnectedToServerDialog(context)
@@ -293,15 +298,20 @@ class _FavouritesTabBarViewState extends State<FavouritesTabBarView>
                     width: MediaQuery.sizeOf(contxt).width * 0.9,
                     child: Material(
                       color: Colors.transparent,
-                      borderRadius: BorderRadius.zero,
+                      borderRadius: BorderRadius.circular(14.0),
                       child: Padding(
                         padding: EdgeInsets.only(
-                          top: kIsWeb ? 15.0 : 6.0,
+                          top: 6.0,
                           left: 18.0,
                           right: 18.0,
                         ),
                         child: ListTile(
                           dense: true,
+                          contentPadding: EdgeInsets.only(
+                            top: kIsWeb ? 5.0 : 0.0,
+                            left: 18.0,
+                            right: 18.0,
+                          ),
                           onTap: () =>
                               contxt.read<VpnProvider>().currentServer.server ==
                                       server
@@ -425,7 +435,7 @@ class _LocationTabBarViewState extends State<LocationTabBarView>
             delay: Duration(milliseconds: 20),
             child: Padding(
               padding: const EdgeInsets.only(
-                top: kIsWeb ? 15.0 : 6.0,
+                top: 6.0,
                 left: 18.0,
                 right: 18.0,
               ),
