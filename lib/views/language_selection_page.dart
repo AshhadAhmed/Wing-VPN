@@ -36,7 +36,6 @@ class LanguageSelectionScreen extends StatelessWidget {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     dismissDirection: DismissDirection.horizontal,
-                    behavior: SnackBarBehavior.floating,
                     padding: EdgeInsets.only(
                       bottom: !kIsWeb ? 2.0 : 8.0,
                       top: !kIsWeb ? 2.0 : 8.0,
@@ -50,7 +49,6 @@ class LanguageSelectionScreen extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    margin: EdgeInsets.all(16.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),

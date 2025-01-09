@@ -32,8 +32,8 @@ class HomeScreen extends StatelessWidget {
           SizedBox(width: 10.0),
         ],
       ),
-      body: Center(
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[

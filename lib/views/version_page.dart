@@ -71,13 +71,15 @@ class VersionScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10.0),
-              Text(
-                "Version 1.0.0",
-                style: TextStyle(
-                  fontSize: 14.0,
-                  color: Color(0XFF8E8E8E),
-                  fontFamily: "MontserratAlternates",
-                  fontWeight: FontWeight.w400,
+              SelectionArea(
+                child: Text(
+                  "Version 1.0.0",
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: Color(0XFF8E8E8E),
+                    fontFamily: "MontserratAlternates",
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
               SizedBox(height: 22.0),

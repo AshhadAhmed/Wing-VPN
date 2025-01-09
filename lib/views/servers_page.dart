@@ -124,11 +124,11 @@ class CustomListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      borderRadius: BorderRadius.zero,
-      child: SizedBox(
-        width: MediaQuery.sizeOf(context).width * 0.9,
+    return SizedBox(
+      width: MediaQuery.sizeOf(context).width * 0.9,
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.zero,
         child: ListTile(
           dense: true,
           onTap: () =>
@@ -256,13 +256,15 @@ class _FavouritesTabBarViewState extends State<FavouritesTabBarView>
                 height: 108.0,
               ),
               SizedBox(height: 24.0),
-              Text(
-                "No Favourites",
-                style: TextStyle(
-                  fontSize: 17.0,
-                  color: Color(0XFF424262),
-                  fontFamily: "Montserrat",
-                  fontWeight: FontWeight.w500,
+              SelectionArea(
+                child: Text(
+                  "No Favourites",
+                  style: TextStyle(
+                    fontSize: 17.0,
+                    color: Color(0XFF424262),
+                    fontFamily: "Montserrat",
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             ],
@@ -287,11 +289,11 @@ class _FavouritesTabBarViewState extends State<FavouritesTabBarView>
                 child: FadeInAnimation(
                   duration: Duration(milliseconds: 300),
                   delay: Duration(milliseconds: 20),
-                  child: Material(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.zero,
-                    child: SizedBox(
-                      width: MediaQuery.sizeOf(contxt).width * 0.9,
+                  child: SizedBox(
+                    width: MediaQuery.sizeOf(contxt).width * 0.9,
+                    child: Material(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.zero,
                       child: Padding(
                         padding: EdgeInsets.only(
                           top: kIsWeb ? 15.0 : 6.0,
@@ -461,24 +463,28 @@ void showConnectedToServerDialog(BuildContext context) {
               size: 25.0,
             ),
             SizedBox(width: 10.0),
-            Text(
-              "Info",
-              style: TextStyle(
-                fontSize: 20.0,
-                color: Colors.white,
-                fontFamily: "Montserrat",
-                fontWeight: FontWeight.w600,
+            SelectionArea(
+              child: Text(
+                "Info",
+                style: TextStyle(
+                  fontSize: 20.0,
+                  color: Colors.white,
+                  fontFamily: "Montserrat",
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
           ],
         ),
-        content: Text(
-          "Already connected to this server!",
-          style: TextStyle(
-            fontSize: 13.0,
-            color: Color(0XFFB8BBCC),
-            fontFamily: "Montserrat",
-            fontWeight: FontWeight.w400,
+        content: SelectionArea(
+          child: Text(
+            "Already connected to this server!",
+            style: TextStyle(
+              fontSize: 13.0,
+              color: Color(0XFFB8BBCC),
+              fontFamily: "Montserrat",
+              fontWeight: FontWeight.w400,
+            ),
           ),
         ),
         actions: [
@@ -521,22 +527,26 @@ void showConnectToServerDialog(
           borderRadius: BorderRadius.circular(12.0),
         ),
         backgroundColor: Color(0XFF1D2031),
-        title: Text(
-          "Connect to Server",
-          style: TextStyle(
-            fontSize: 20.0,
-            color: Colors.white,
-            fontFamily: "Montserrat",
-            fontWeight: FontWeight.w600,
+        title: SelectionArea(
+          child: Text(
+            "Connect to Server",
+            style: TextStyle(
+              fontSize: 20.0,
+              color: Colors.white,
+              fontFamily: "Montserrat",
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ),
-        content: Text(
-          "Do you want to connect to this server?",
-          style: TextStyle(
-            fontSize: 13.0,
-            color: Color(0XFFB8BBCC),
-            fontFamily: "Montserrat",
-            fontWeight: FontWeight.w400,
+        content: SelectionArea(
+          child: Text(
+            "Do you want to connect to this server?",
+            style: TextStyle(
+              fontSize: 13.0,
+              color: Color(0XFFB8BBCC),
+              fontFamily: "Montserrat",
+              fontWeight: FontWeight.w400,
+            ),
           ),
         ),
         actions: [
@@ -573,18 +583,15 @@ void showConnectToServerDialog(
                   padding: EdgeInsets.only(
                     bottom: !kIsWeb ? 2.0 : 8.0,
                     top: !kIsWeb ? 2.0 : 8.0,
-                    right: 5.0,
                     left: 15.0,
                   ),
-                  behavior: SnackBarBehavior.floating,
                   content: Text(
-                    "Successfully connected",
+                    "Connected to $server",
                     style: TextStyle(
                       fontFamily: "Montserrat",
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  margin: EdgeInsets.all(16.0),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),

@@ -56,23 +56,27 @@ class ConnectionReportScreen extends StatelessWidget {
                   children: <Widget>[
                     Selector<VpnProvider, String>(
                       selector: (context, provider) => provider.connectionTime,
-                      builder: (contxt, value, _) => Text(
-                        value,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 45.0,
-                          fontFamily: "Montserrat",
-                          fontWeight: FontWeight.w600,
+                      builder: (contxt, value, _) => SelectionArea(
+                        child: Text(
+                          value,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 45.0,
+                            fontFamily: "Montserrat",
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
                     ),
-                    Text(
-                      "Total connection time",
-                      style: TextStyle(
-                        color: Color(0XFF7C7F90),
-                        fontSize: 14.0,
-                        fontFamily: "Montserrat",
-                        fontWeight: FontWeight.w500,
+                    SelectionArea(
+                      child: Text(
+                        "Total connection time",
+                        style: TextStyle(
+                          color: Color(0XFF7C7F90),
+                          fontSize: 14.0,
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                   ],
@@ -101,22 +105,26 @@ class ConnectionReportScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              title: Text(
-                "IP address",
-                style: TextStyle(
-                  color: Color(0XFF7C7F90),
-                  fontSize: 11.0,
-                  fontFamily: "Montserrat",
-                  fontWeight: FontWeight.w500,
+              title: SelectionArea(
+                child: Text(
+                  "IP address",
+                  style: TextStyle(
+                    color: Color(0XFF7C7F90),
+                    fontSize: 11.0,
+                    fontFamily: "Montserrat",
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
-              subtitle: Text(
-                "127.123.21.12",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.0,
-                  fontFamily: "Montserrat",
-                  fontWeight: FontWeight.w600,
+              subtitle: SelectionArea(
+                child: Text(
+                  "127.123.21.12",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.0,
+                    fontFamily: "Montserrat",
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
             ),
@@ -128,22 +136,26 @@ class ConnectionReportScreen extends StatelessWidget {
                   "assets/images/global.png",
                   height: 35.0,
                 ),
-                title: Text(
-                  "Current server",
-                  style: TextStyle(
-                    color: Color(0XFF7C7F90),
-                    fontSize: 11.0,
-                    fontFamily: "Montserrat",
-                    fontWeight: FontWeight.w500,
+                title: SelectionArea(
+                  child: Text(
+                    "Current server",
+                    style: TextStyle(
+                      color: Color(0XFF7C7F90),
+                      fontSize: 11.0,
+                      fontFamily: "Montserrat",
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
-                subtitle: Text(
-                  value,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16.0,
-                    fontFamily: "Montserrat",
-                    fontWeight: FontWeight.w600,
+                subtitle: SelectionArea(
+                  child: Text(
+                    value,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16.0,
+                      fontFamily: "Montserrat",
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),

@@ -41,25 +41,29 @@ class PremiumScreen extends StatelessWidget {
             children: <Widget>[
               SizedBox(height: 40.0),
               Lottie.asset("assets/animations/crown.json"),
-              Text(
-                "Get Premium",
-                style: TextStyle(
-                  fontSize: 18.0,
-                  color: Colors.white,
-                  fontFamily: "Montserrat",
-                  fontWeight: FontWeight.w700,
+              SelectionArea(
+                child: Text(
+                  "Get Premium",
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    color: Colors.white,
+                    fontFamily: "Montserrat",
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
               SizedBox(height: 2.0),
               Builder(
-                builder: (contxt) => Text(
-                  "Upgrade to Premium to enjoy${MediaQuery.orientationOf(contxt) == Orientation.portrait ? "\n" : " "}more features",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 12.0,
-                    color: Color(0XFFAEB1C2),
-                    fontFamily: "Montserrat",
-                    fontWeight: FontWeight.w500,
+                builder: (contxt) => SelectionArea(
+                  child: Text(
+                    "Upgrade to Premium to enjoy${MediaQuery.orientationOf(contxt) == Orientation.portrait ? "\n" : " "}more features",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 12.0,
+                      color: Color(0XFFAEB1C2),
+                      fontFamily: "Montserrat",
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ),
@@ -69,13 +73,15 @@ class PremiumScreen extends StatelessWidget {
                 children: <Widget>[
                   Image.asset("assets/images/global.png", height: 18.0),
                   SizedBox(width: 12.0),
-                  Text(
-                    "All Global Services",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12.0,
-                      fontFamily: "Montserrat",
-                      fontWeight: FontWeight.w600,
+                  SelectionArea(
+                    child: Text(
+                      "All Global Services",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12.0,
+                        fontFamily: "Montserrat",
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   )
                 ],
@@ -87,13 +93,15 @@ class PremiumScreen extends StatelessWidget {
                   SizedBox(width: 32.0),
                   Image.asset("assets/images/flash.png", height: 18.0),
                   SizedBox(width: 12.0),
-                  Text(
-                    "Super Fast Connections",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12.0,
-                      fontFamily: "Montserrat",
-                      fontWeight: FontWeight.w600,
+                  SelectionArea(
+                    child: Text(
+                      "Super Fast Connections",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12.0,
+                        fontFamily: "Montserrat",
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   )
                 ],
@@ -105,13 +113,15 @@ class PremiumScreen extends StatelessWidget {
                   SizedBox(width: 20.0),
                   Image.asset("assets/images/server.png", height: 18.0),
                   SizedBox(width: 12.0),
-                  Text(
-                    "All 10+ Servers for VIP",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12.0,
-                      fontFamily: "Montserrat",
-                      fontWeight: FontWeight.w600,
+                  SelectionArea(
+                    child: Text(
+                      "All 10+ Servers for VIP",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12.0,
+                        fontFamily: "Montserrat",
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   )
                 ],
@@ -122,13 +132,15 @@ class PremiumScreen extends StatelessWidget {
                 children: <Widget>[
                   Image.asset("assets/images/audio.png", height: 15.0),
                   SizedBox(width: 12.0),
-                  Text(
-                    "ADS Free Service",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12.0,
-                      fontFamily: "Montserrat",
-                      fontWeight: FontWeight.w600,
+                  SelectionArea(
+                    child: Text(
+                      "ADS Free Service",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 12.0,
+                        fontFamily: "Montserrat",
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                   SizedBox(width: 6.0),
@@ -160,13 +172,15 @@ class PremiumScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 2.0),
-              Text(
-                "No Commitment & Cancel Anytime",
-                style: TextStyle(
-                  color: Color(0XFF8A8C99),
-                  fontSize: 12.0,
-                  fontFamily: "Montserrat",
-                  fontWeight: FontWeight.w500,
+              SelectionArea(
+                child: Text(
+                  "No Commitment & Cancel Anytime",
+                  style: TextStyle(
+                    color: Color(0XFF8A8C99),
+                    fontSize: 12.0,
+                    fontFamily: "Montserrat",
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
               SizedBox(height: 18.0),

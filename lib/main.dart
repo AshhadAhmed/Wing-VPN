@@ -43,10 +43,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         scaffoldBackgroundColor: Color(0XFF10172A),
-        appBarTheme: AppBarTheme(backgroundColor: Colors.transparent),
+        appBarTheme: AppBarTheme(
+          elevation: 0.0,
+          backgroundColor: Colors.transparent,
+        ),
         textSelectionTheme: TextSelectionThemeData(
-          selectionColor: Colors.blue.shade200,
-          selectionHandleColor: Colors.blue.shade200,
+          cursorColor: Colors.blue,
+          selectionColor: Colors.blue.withValues(alpha: 0.4),
+          selectionHandleColor: Colors.blue,
         ),
         tooltipTheme: TooltipThemeData(
           preferBelow: false,
