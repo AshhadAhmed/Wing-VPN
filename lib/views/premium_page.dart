@@ -4,7 +4,8 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'package:wing_vpn/providers/premium_page_radio_provider.dart';
+
+import '../providers/premium_page_radio_provider.dart';
 
 class PremiumScreen extends StatelessWidget {
   const PremiumScreen({super.key});

@@ -6,8 +6,9 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:wing_vpn/providers/check_box_provider.dart';
-import 'package:wing_vpn/router/routes.dart';
+
+import '../providers/check_box_provider.dart';
+import '../router/routes.dart';
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({super.key});

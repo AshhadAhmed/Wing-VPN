@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:wing_vpn/providers/language_page_radio_provider.dart';
+
+import '../providers/language_page_radio_provider.dart';
 
 class LanguageSelectionScreen extends StatelessWidget {
   const LanguageSelectionScreen({super.key});
@@ -86,53 +87,57 @@ class LanguageSelectionScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: Center(
-        child: Column(
-          children: AnimationConfiguration.toStaggeredList(
-            childAnimationBuilder: (widget) {
-              return SlideAnimation(
-                delay: Duration(milliseconds: 20),
-                duration: Duration(milliseconds: 300),
-                horizontalOffset: -50.0,
-                child: FadeInAnimation(
-                  curve: Curves.linear,
-                  duration: Duration(milliseconds: 300),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: AnimationConfiguration.toStaggeredList(
+              childAnimationBuilder: (widget) {
+                return SlideAnimation(
                   delay: Duration(milliseconds: 20),
-                  child: widget,
+                  duration: Duration(milliseconds: 300),
+                  horizontalOffset: -50.0,
+                  child: FadeInAnimation(
+                    curve: Curves.linear,
+                    duration: Duration(milliseconds: 300),
+                    delay: Duration(milliseconds: 20),
+                    child: widget,
+                  ),
+                );
+              },
+              children: <Widget>[
+                CustomListTile(
+                  text: "Urdu",
+                  radioValue: 0,
+                  backgroundImage:
+                      AssetImage("assets/images/pakistan_flag.png"),
                 ),
-              );
-            },
-            children: <Widget>[
-              CustomListTile(
-                text: "Urdu",
-                radioValue: 0,
-                backgroundImage: AssetImage("assets/images/pakistan_flag.png"),
-              ),
-              SizedBox(height: 5.0),
-              CustomListTile(
-                text: "English",
-                radioValue: 1,
-                backgroundImage: AssetImage("assets/images/UK_flag.png"),
-              ),
-              SizedBox(height: 5.0),
-              CustomListTile(
-                text: "Spanish",
-                radioValue: 2,
-                backgroundImage: AssetImage("assets/images/spanish_flag.png"),
-              ),
-              SizedBox(height: 5.0),
-              CustomListTile(
-                text: "Indonesian",
-                radioValue: 3,
-                backgroundImage: AssetImage("assets/images/indonesia_flag.png"),
-              ),
-              SizedBox(height: 5.0),
-              CustomListTile(
-                text: "Chinese",
-                radioValue: 4,
-                backgroundImage: AssetImage("assets/images/china_flag.png"),
-              ),
-            ],
+                SizedBox(height: 5.0),
+                CustomListTile(
+                  text: "English",
+                  radioValue: 1,
+                  backgroundImage: AssetImage("assets/images/UK_flag.png"),
+                ),
+                SizedBox(height: 5.0),
+                CustomListTile(
+                  text: "Spanish",
+                  radioValue: 2,
+                  backgroundImage: AssetImage("assets/images/spanish_flag.png"),
+                ),
+                SizedBox(height: 5.0),
+                CustomListTile(
+                  text: "Indonesian",
+                  radioValue: 3,
+                  backgroundImage:
+                      AssetImage("assets/images/indonesia_flag.png"),
+                ),
+                SizedBox(height: 5.0),
+                CustomListTile(
+                  text: "Chinese",
+                  radioValue: 4,
+                  backgroundImage: AssetImage("assets/images/china_flag.png"),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -158,42 +163,46 @@ class CustomListTile extends StatelessWidget {
       selector: (context, provider) => provider.selectedValue,
       builder: (contxt, value, _) => SizedBox(
         width: MediaQuery.sizeOf(contxt).width * 0.9,
-        child: ListTile(
-          onTap: () => contxt
-              .read<LanguagePageRadioProvider>()
-              .setSelectedValue(radioValue),
-          tileColor: Color(0XFF1D2031),
-          shape: RoundedRectangleBorder(
-            side: value == radioValue
-                ? BorderSide(color: Colors.blue, width: 1.2)
-                : BorderSide.none,
-            borderRadius: BorderRadius.circular(14.0),
-          ),
-          leading: CircleAvatar(backgroundImage: backgroundImage),
-          title: Text(
-            text,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 17.0,
-              fontFamily: "Montserrat",
-              fontWeight: FontWeight.w500,
+        child: Material(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(14.0),
+          child: ListTile(
+            onTap: () => contxt
+                .read<LanguagePageRadioProvider>()
+                .setSelectedValue(radioValue),
+            tileColor: Color(0XFF1D2031),
+            shape: RoundedRectangleBorder(
+              side: value == radioValue
+                  ? BorderSide(color: Colors.blue, width: 1.2)
+                  : BorderSide.none,
+              borderRadius: BorderRadius.circular(14.0),
             ),
-          ),
-          splashColor: Colors.transparent,
-          trailing: Container(
-            width: 24.0,
-            height: 24.0,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: value == radioValue
-                  ? Border.all(color: Colors.blue, width: 1.2)
-                  : Border.all(color: Colors.white),
+            leading: CircleAvatar(backgroundImage: backgroundImage),
+            title: Text(
+              text,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 17.0,
+                fontFamily: "Montserrat",
+                fontWeight: FontWeight.w500,
+              ),
             ),
-            child: Container(
-              margin: EdgeInsets.all(4.0),
+            splashColor: Colors.transparent,
+            trailing: Container(
+              width: 24.0,
+              height: 24.0,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: value == radioValue ? Colors.blue : null,
+                border: value == radioValue
+                    ? Border.all(color: Colors.blue, width: 1.2)
+                    : Border.all(color: Colors.white),
+              ),
+              child: Container(
+                margin: EdgeInsets.all(4.0),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: value == radioValue ? Colors.blue : null,
+                ),
               ),
             ),
           ),

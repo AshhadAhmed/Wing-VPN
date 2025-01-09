@@ -3,8 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import 'package:wing_vpn/providers/vpn_provider.dart';
-import 'package:wing_vpn/router/routes.dart';
+
+import '../providers/vpn_provider.dart';
+import '../router/routes.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

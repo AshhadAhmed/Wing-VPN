@@ -3,12 +3,13 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
-import 'package:wing_vpn/providers/favourite_servers_provider.dart';
-import 'package:wing_vpn/providers/language_page_radio_provider.dart';
-import 'package:wing_vpn/providers/linear_progress_provider.dart';
-import 'package:wing_vpn/providers/premium_page_radio_provider.dart';
-import 'package:wing_vpn/providers/vpn_provider.dart';
-import 'package:wing_vpn/router/routes_config.dart';
+
+import './providers/favourite_servers_provider.dart';
+import './providers/language_page_radio_provider.dart';
+import './providers/linear_progress_provider.dart';
+import './providers/premium_page_radio_provider.dart';
+import './providers/vpn_provider.dart';
+import './router/routes_config.dart';
 
 void main() async {
   try {

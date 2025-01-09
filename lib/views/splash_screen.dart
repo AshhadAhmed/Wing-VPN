@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:wing_vpn/providers/linear_progress_provider.dart';
-import 'package:wing_vpn/router/routes.dart';
+
+import '../providers/linear_progress_provider.dart';
+import '../router/routes.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

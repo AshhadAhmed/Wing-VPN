@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:wing_vpn/providers/favourite_servers_provider.dart';
-import 'package:wing_vpn/providers/vpn_provider.dart';
+
+import '../providers/favourite_servers_provider.dart';
+import '../providers/vpn_provider.dart';
 
 class ServersScreen extends StatelessWidget {
   const ServersScreen({super.key});
