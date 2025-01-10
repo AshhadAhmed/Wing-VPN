@@ -107,7 +107,7 @@ class ServersScreen extends StatelessWidget {
 }
 
 class CustomListTile extends StatelessWidget {
-  final String titleText;
+  final String server;
   final String serverStrength;
   final Widget? subtitle;
   final Widget? leading;
@@ -115,7 +115,7 @@ class CustomListTile extends StatelessWidget {
 
   const CustomListTile({
     super.key,
-    required this.titleText,
+    required this.server,
     this.leading,
     this.subtitle,
     required this.backgroundImage,
@@ -130,6 +130,7 @@ class CustomListTile extends StatelessWidget {
         color: Colors.transparent,
         borderRadius: BorderRadius.circular(14.0),
         child: ListTile(
+          key: ValueKey(server),
           dense: true,
           contentPadding: EdgeInsets.only(
             top: kIsWeb ? 5.0 : 0.0,
@@ -137,11 +138,11 @@ class CustomListTile extends StatelessWidget {
             right: 18.0,
           ),
           onTap: () =>
-              context.read<VpnProvider>().currentServer.server == titleText
+              context.read<VpnProvider>().currentServer.server == server
                   ? showConnectedToServerDialog(context)
                   : showConnectToServerDialog(
                       context,
-                      server: titleText,
+                      server: server,
                       image: backgroundImage,
                     ),
           tileColor: Color(0XFF1D2031),
@@ -150,7 +151,7 @@ class CustomListTile extends StatelessWidget {
           ),
           leading: CircleAvatar(backgroundImage: backgroundImage),
           title: Text(
-            titleText,
+            server,
             style: TextStyle(
               color: Colors.white,
               fontSize: 15.0,
@@ -177,7 +178,7 @@ class CustomListTile extends StatelessWidget {
               ),
               SizedBox(width: 16.0),
               FavoriteButton(
-                server: titleText,
+                server: server,
                 flag: backgroundImage,
                 strength: AssetImage(
                     "assets/images/wifi_${serverStrength.toLowerCase()}.png"),
@@ -306,6 +307,7 @@ class _FavouritesTabBarViewState extends State<FavouritesTabBarView>
                           right: 18.0,
                         ),
                         child: ListTile(
+                          key: ValueKey(detailedServerInfo.servers[index]),
                           dense: true,
                           contentPadding: EdgeInsets.only(
                             top: kIsWeb ? 5.0 : 0.0,
@@ -440,7 +442,7 @@ class _LocationTabBarViewState extends State<LocationTabBarView>
                 right: 18.0,
               ),
               child: CustomListTile(
-                titleText: _servers[index],
+                server: _servers[index],
                 backgroundImage: _countryFlags[index],
                 serverStrength: _serverStrengths[index],
               ),

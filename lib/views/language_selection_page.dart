@@ -104,33 +104,33 @@ class LanguageSelectionScreen extends StatelessWidget {
               },
               children: <Widget>[
                 CustomListTile(
-                  text: "Urdu",
+                  name: "Urdu",
                   radioValue: 0,
                   backgroundImage:
                       AssetImage("assets/images/pakistan_flag.png"),
                 ),
                 SizedBox(height: 5.0),
                 CustomListTile(
-                  text: "English",
+                  name: "English",
                   radioValue: 1,
                   backgroundImage: AssetImage("assets/images/UK_flag.png"),
                 ),
                 SizedBox(height: 5.0),
                 CustomListTile(
-                  text: "Spanish",
+                  name: "Spanish",
                   radioValue: 2,
                   backgroundImage: AssetImage("assets/images/spanish_flag.png"),
                 ),
                 SizedBox(height: 5.0),
                 CustomListTile(
-                  text: "Indonesian",
+                  name: "Indonesian",
                   radioValue: 3,
                   backgroundImage:
                       AssetImage("assets/images/indonesia_flag.png"),
                 ),
                 SizedBox(height: 5.0),
                 CustomListTile(
-                  text: "Chinese",
+                  name: "Chinese",
                   radioValue: 4,
                   backgroundImage: AssetImage("assets/images/china_flag.png"),
                 ),
@@ -144,13 +144,13 @@ class LanguageSelectionScreen extends StatelessWidget {
 }
 
 class CustomListTile extends StatelessWidget {
-  final String text;
+  final String name;
   final int radioValue;
   final ImageProvider<Object>? backgroundImage;
 
   const CustomListTile({
     super.key,
-    required this.text,
+    required this.name,
     required this.radioValue,
     this.backgroundImage,
   });
@@ -177,7 +177,7 @@ class CustomListTile extends StatelessWidget {
             ),
             leading: CircleAvatar(backgroundImage: backgroundImage),
             title: Text(
-              text,
+              name,
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 17.0,
