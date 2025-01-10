@@ -1,16 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:wing_vpn/router/routes.dart';
-import 'package:wing_vpn/views/connection_report_page.dart';
-import 'package:wing_vpn/views/get_started_page.dart';
-import 'package:wing_vpn/views/language_selection_page.dart';
-import 'package:wing_vpn/views/main_page.dart';
-import 'package:wing_vpn/views/premium_page.dart';
-import 'package:wing_vpn/views/servers_page.dart';
-import 'package:wing_vpn/views/settings_page.dart';
-import 'package:wing_vpn/views/splash_screen.dart';
-import 'package:wing_vpn/views/version_page.dart';
+
+import '../router/routes.dart';
+import '../views/connection_report_page.dart';
+import '../views/get_started_page.dart';
+import '../views/language_selection_page.dart';
+import '../views/main_page.dart';
+import '../views/premium_page.dart';
+import '../views/servers_page.dart';
+import '../views/settings_page.dart';
+import '../views/splash_screen.dart';
+import '../views/version_page.dart';
 
 class RoutesConfig {
   static final GoRouter router = GoRouter(
