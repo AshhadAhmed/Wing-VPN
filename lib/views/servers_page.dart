@@ -108,8 +108,8 @@ class ServersScreen extends StatelessWidget {
 
 class CustomListTile extends StatelessWidget {
   final String server;
-  final String serverStrength;
   final Widget? subtitle;
+  final String serverStrength;
   final Widget? leading;
   final ImageProvider backgroundImage;
 
@@ -130,7 +130,6 @@ class CustomListTile extends StatelessWidget {
         color: Colors.transparent,
         borderRadius: BorderRadius.circular(14.0),
         child: ListTile(
-          key: ValueKey(server),
           dense: true,
           contentPadding: EdgeInsets.only(
             top: kIsWeb ? 5.0 : 0.0,
@@ -442,6 +441,7 @@ class _LocationTabBarViewState extends State<LocationTabBarView>
                 right: 18.0,
               ),
               child: CustomListTile(
+                key: ValueKey(_servers[index]),
                 server: _servers[index],
                 backgroundImage: _countryFlags[index],
                 serverStrength: _serverStrengths[index],
