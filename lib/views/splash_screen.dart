@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback(
-      (_) async {
+      (_) {
         final storage = GetStorage();
         final linearProgressProvider = context.read<LinearProgressProvider>();
 
@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
           }
         });
 
-        await precacheImage(AssetImage("assets/images/US_flag.jpg"), context);
+        precacheImage(AssetImage("assets/images/US_flag.jpg"), context);
       },
     );
   }
