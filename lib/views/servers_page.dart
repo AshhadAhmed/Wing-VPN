@@ -289,11 +289,11 @@ class _FavouritesTabBarViewState extends State<FavouritesTabBarView>
               position: index,
               child: SlideAnimation(
                 horizontalOffset: -70.0,
-                delay: Duration(milliseconds: 20),
+                delay: Duration(milliseconds: 50),
                 duration: Duration(milliseconds: 300),
                 child: FadeInAnimation(
                   duration: Duration(milliseconds: 300),
-                  delay: Duration(milliseconds: 20),
+                  delay: Duration(milliseconds: 50),
                   child: SizedBox(
                     width: MediaQuery.sizeOf(contxt).width * 0.9,
                     child: Material(
@@ -389,7 +389,7 @@ class _LocationTabBarViewState extends State<LocationTabBarView>
     "Toronto",
   ];
 
-  final _countryFlags = [
+  final _countryFlags = const [
     AssetImage("assets/images/singapore_flag.png"),
     AssetImage("assets/images/netherlands_flag.png"),
     AssetImage("assets/images/US_flag.jpg"),
@@ -429,11 +429,11 @@ class _LocationTabBarViewState extends State<LocationTabBarView>
         position: index,
         child: SlideAnimation(
           horizontalOffset: -70.0,
-          delay: Duration(milliseconds: 20),
+          delay: Duration(milliseconds: 50),
           duration: Duration(milliseconds: 300),
           child: FadeInAnimation(
             duration: Duration(milliseconds: 300),
-            delay: Duration(milliseconds: 20),
+            delay: Duration(milliseconds: 50),
             child: Padding(
               padding: const EdgeInsets.only(
                 top: 6.0,
