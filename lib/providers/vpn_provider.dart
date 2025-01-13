@@ -3,16 +3,21 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 
-import '../views/main_page.dart';
+import '../views/home_page.dart';
+
+final storage = GetStorage();
 
 class VpnProvider with ChangeNotifier {
   Timer? _timer;
   bool _isConnected = false, _isConnecting = false;
+
   Duration _connectionDuration = Duration.zero;
+
   ServerInfo _currentServer = ServerInfo(
-    server: "United States",
-    flag: AssetImage("assets/images/US_flag.jpg"),
+    server: storage.read<String>("country") ?? "United States",
+    flag: storage.read<String>("flag") ?? "assets/images/US_flag.jpg",
   );
 
   bool get isConnected => _isConnected;
@@ -35,8 +40,8 @@ class VpnProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  VpnProvider setServer(String server, ImageProvider? image) {
-    _currentServer = ServerInfo(server: server, flag: image);
+  VpnProvider setServer(String server, String imagePath) {
+    _currentServer = ServerInfo(server: server, flag: imagePath);
     notifyListeners();
 
     return this;

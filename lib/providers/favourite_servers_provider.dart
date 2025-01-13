@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 
 class FavouriteServersProvider extends ChangeNotifier {
   List<String> _favourites = [];
-  List<ImageProvider> _flags = [];
-  List<ImageProvider> _strengths = [];
+  List<String> _flags = [];
+  List<String> _strengths = [];
 
   List<String> get favourites => List.unmodifiable(_favourites);
-  List<ImageProvider> get flags => List.unmodifiable(_flags);
-  List<ImageProvider> get strengths => List.unmodifiable(_strengths);
+  List<String> get flags => List.unmodifiable(_flags);
+  List<String> get strengths => List.unmodifiable(_strengths);
 
   void addFavouriteServer(
     String server,
-    ImageProvider flag,
-    ImageProvider serverStrength,
+    String flag,
+    String serverStrength,
   ) {
     _favourites.add(server);
     _flags.add(flag);

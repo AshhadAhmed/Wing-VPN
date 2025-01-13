@@ -6,7 +6,7 @@ import '../router/routes.dart';
 import '../views/connection_report_page.dart';
 import '../views/get_started_page.dart';
 import '../views/language_selection_page.dart';
-import '../views/main_page.dart';
+import '../views/home_page.dart';
 import '../views/premium_page.dart';
 import '../views/servers_page.dart';
 import '../views/settings_page.dart';

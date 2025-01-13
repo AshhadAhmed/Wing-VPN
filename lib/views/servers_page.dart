@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -111,7 +112,7 @@ class CustomListTile extends StatelessWidget {
   final Widget? subtitle;
   final String serverStrength;
   final Widget? leading;
-  final ImageProvider backgroundImage;
+  final String backgroundImage;
 
   const CustomListTile({
     super.key,
@@ -142,13 +143,13 @@ class CustomListTile extends StatelessWidget {
                   : showConnectToServerDialog(
                       context,
                       server: server,
-                      image: backgroundImage,
+                      imagePath: backgroundImage,
                     ),
           tileColor: Color(0XFF1D2031),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(14.0),
           ),
-          leading: CircleAvatar(backgroundImage: backgroundImage),
+          leading: CircleAvatar(backgroundImage: AssetImage(backgroundImage)),
           title: Text(
             server,
             style: TextStyle(
@@ -179,8 +180,8 @@ class CustomListTile extends StatelessWidget {
               FavoriteButton(
                 server: server,
                 flag: backgroundImage,
-                strength: AssetImage(
-                    "assets/images/wifi_${serverStrength.toLowerCase()}.png"),
+                strength:
+                    "assets/images/wifi_${serverStrength.toLowerCase()}.png",
               )
             ],
           ),
@@ -192,8 +193,8 @@ class CustomListTile extends StatelessWidget {
 
 class FavoriteButton extends StatelessWidget {
   final String server;
-  final ImageProvider flag;
-  final ImageProvider strength;
+  final String flag;
+  final String strength;
 
   const FavoriteButton({
     super.key,
@@ -320,13 +321,15 @@ class _FavouritesTabBarViewState extends State<FavouritesTabBarView>
                                   : showConnectToServerDialog(
                                       contxt,
                                       server: server,
-                                      image: flag,
+                                      imagePath: flag,
                                     ),
                           tileColor: Color(0XFF1D2031),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(14.0),
                           ),
-                          leading: CircleAvatar(backgroundImage: flag),
+                          leading: CircleAvatar(
+                            backgroundImage: AssetImage(flag),
+                          ),
                           title: Text(
                             server,
                             style: TextStyle(
@@ -346,7 +349,7 @@ class _FavouritesTabBarViewState extends State<FavouritesTabBarView>
                             ),
                           ),
                           splashColor: Colors.transparent,
-                          trailing: Image(image: strength, height: 18.0),
+                          trailing: Image.asset(strength, height: 18.0),
                         ),
                       ),
                     ),
@@ -389,18 +392,18 @@ class _LocationTabBarViewState extends State<LocationTabBarView>
     "Toronto",
   ];
 
-  final _countryFlags = const [
-    AssetImage("assets/images/singapore_flag.png"),
-    AssetImage("assets/images/netherlands_flag.png"),
-    AssetImage("assets/images/US_flag.jpg"),
-    AssetImage("assets/images/france_flag.png"),
-    AssetImage("assets/images/germany_flag.png"),
-    AssetImage("assets/images/canada_flag.png"),
-    AssetImage("assets/images/UK_flag.png"),
-    AssetImage("assets/images/germany_flag.png"),
-    AssetImage("assets/images/US_flag.jpg"),
-    AssetImage("assets/images/china_flag.png"),
-    AssetImage("assets/images/canada_flag.png")
+  final _countryFlags = [
+    "assets/images/singapore_flag.png",
+    "assets/images/netherlands_flag.png",
+    "assets/images/US_flag.jpg",
+    "assets/images/france_flag.png",
+    "assets/images/germany_flag.png",
+    "assets/images/canada_flag.png",
+    "assets/images/UK_flag.png",
+    "assets/images/germany_flag.png",
+    "assets/images/US_flag.jpg",
+    "assets/images/china_flag.png",
+    "assets/images/canada_flag.png",
   ];
 
   final _serverStrengths = [
@@ -528,7 +531,7 @@ void showConnectedToServerDialog(BuildContext context) {
 void showConnectToServerDialog(
   BuildContext context, {
   required String server,
-  required ImageProvider image,
+  required String imagePath,
 }) {
   showDialog(
     context: context,
@@ -582,10 +585,15 @@ void showConnectToServerDialog(
           ),
           TextButton(
             onPressed: () {
+              final storage = GetStorage();
+
               contxt
                   .read<VpnProvider>()
-                  .setServer(server, image)
+                  .setServer(server, imagePath)
                   .disableConnection();
+
+              storage.write("country", server);
+              storage.write("flag", imagePath);
 
               GoRouter.of(contxt).pop();
 
@@ -644,8 +652,8 @@ void showConnectToServerDialog(
 
 class DetailedServerInfo {
   final List<String> servers;
-  final List<ImageProvider> flags;
-  final List<ImageProvider> serverStrength;
+  final List<String> flags;
+  final List<String> serverStrength;
 
   DetailedServerInfo({
     required this.servers,

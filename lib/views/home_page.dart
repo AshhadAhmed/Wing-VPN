@@ -88,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                       tileColor: Color(0XFF1D2031),
                       leading: CircleAvatar(
                         radius: 19.0,
-                        backgroundImage: serverInfo.flag,
+                        backgroundImage: AssetImage(serverInfo.flag),
                       ),
                       splashColor: Colors.transparent,
                       shape: RoundedRectangleBorder(
@@ -96,7 +96,7 @@ class HomeScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(114.0),
                       ),
                       title: Text(
-                        serverInfo.server!,
+                        serverInfo.server,
                         style: TextStyle(
                           fontSize: 16.0,
                           color: Colors.white,
@@ -298,10 +298,13 @@ class HomeScreen extends StatelessWidget {
 }
 
 class ServerInfo {
-  final String? server;
-  final ImageProvider? flag;
+  final String server;
+  final String flag;
 
-  ServerInfo({this.server, this.flag});
+  ServerInfo({
+    this.server = "United States",
+    this.flag = "assets/images/US_flag.jpg",
+  });
 
   @override
   bool operator ==(Object other) {
