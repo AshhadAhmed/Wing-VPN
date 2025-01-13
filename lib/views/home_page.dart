@@ -301,10 +301,7 @@ class ServerInfo {
   final String server;
   final String flag;
 
-  ServerInfo({
-    this.server = "United States",
-    this.flag = "assets/images/US_flag.jpg",
-  });
+  ServerInfo({required this.server, required this.flag});
 
   @override
   bool operator ==(Object other) {

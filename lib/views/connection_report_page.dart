@@ -129,7 +129,7 @@ class ConnectionReportScreen extends StatelessWidget {
               ),
             ),
             Selector<VpnProvider, String>(
-              selector: (context, provider) => provider.currentServer.server!,
+              selector: (context, provider) => provider.currentServer.server,
               builder: (contxt, value, _) => ListTile(
                 dense: true,
                 leading: Image.asset(
