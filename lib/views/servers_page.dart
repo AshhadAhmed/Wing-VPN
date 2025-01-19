@@ -493,7 +493,7 @@ void showConnectedToServerDialog(BuildContext context) {
         ),
         content: SelectionArea(
           child: Text(
-            "Already connected to this server!",
+            "Already connected to this server.",
             style: TextStyle(
               fontSize: 13.0,
               color: Color(0XFFB8BBCC),
