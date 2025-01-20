@@ -258,8 +258,8 @@ class _FavouritesTabBarViewState extends State<FavouritesTabBarView>
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Image.asset(
-                "assets/images/favourites.png",
+              SvgPicture.asset(
+                "assets/images/favourites.svg",
                 height: 108.0,
               ),
               SizedBox(height: 24.0),

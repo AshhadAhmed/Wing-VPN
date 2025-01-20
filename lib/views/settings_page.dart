@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../router/routes.dart';
@@ -46,8 +47,8 @@ class SettingsScreen extends StatelessWidget {
               children: <Widget>[
                 CustomListTile(
                   text: "Server list",
-                  widget: Image.asset(
-                    "assets/images/check_list.png",
+                  widget: SvgPicture.asset(
+                    "assets/images/check_list.svg",
                     height: 18.0,
                   ),
                   onTap: () => context.push(AppRoutes.servers),
@@ -56,16 +57,16 @@ class SettingsScreen extends StatelessWidget {
                 CustomListTile(
                   onTap: () {},
                   text: "Private browser",
-                  widget: Image.asset(
-                    "assets/images/global_search.png",
+                  widget: SvgPicture.asset(
+                    "assets/images/global_search.svg",
                     height: 18.0,
                   ),
                 ),
                 SizedBox(height: 5.0),
                 CustomListTile(
                   text: "Language",
-                  widget: Image.asset(
-                    "assets/images/translate.png",
+                  widget: SvgPicture.asset(
+                    "assets/images/translate.svg",
                     height: 18.0,
                   ),
                   onTap: () => context.push(AppRoutes.language),

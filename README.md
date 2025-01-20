@@ -17,6 +17,7 @@
 - `loading_animation_widget`: Provides attractive loading animations.
 - `flutter_native_splash`: Easily adds splash screens.
 - `go_router`: A declarative router for Flutter.
+- `flutter_svg`: A package for rendering SVG (Scalable Vector Graphics) files.
 
 ## Setup
 

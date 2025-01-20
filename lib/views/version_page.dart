@@ -101,8 +101,8 @@ class VersionScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                       child: Center(
-                        child: Image.asset(
-                          "assets/images/refresh.png",
+                        child: SvgPicture.asset(
+                          "assets/images/refresh.svg",
                           height: 16.0,
                         ),
                       ),
