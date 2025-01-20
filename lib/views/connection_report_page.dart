@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -132,8 +133,8 @@ class ConnectionReportScreen extends StatelessWidget {
               selector: (context, provider) => provider.currentServer.server,
               builder: (contxt, value, _) => ListTile(
                 dense: true,
-                leading: Image.asset(
-                  "assets/images/global.png",
+                leading: SvgPicture.asset(
+                  "assets/images/global.svg",
                   height: 35.0,
                 ),
                 title: SelectionArea(

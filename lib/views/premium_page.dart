@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
@@ -71,7 +72,7 @@ class PremiumScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Image.asset("assets/images/global.png", height: 18.0),
+                  SvgPicture.asset("assets/images/global.svg", height: 18.0),
                   SizedBox(width: 12.0),
                   SelectionArea(
                     child: Text(
@@ -91,7 +92,7 @@ class PremiumScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   SizedBox(width: 32.0),
-                  Image.asset("assets/images/flash.png", height: 18.0),
+                  SvgPicture.asset("assets/images/flash.svg", height: 18.0),
                   SizedBox(width: 12.0),
                   SelectionArea(
                     child: Text(
@@ -111,7 +112,7 @@ class PremiumScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   SizedBox(width: 20.0),
-                  Image.asset("assets/images/server.png", height: 18.0),
+                  SvgPicture.asset("assets/images/server.svg", height: 18.0),
                   SizedBox(width: 12.0),
                   SelectionArea(
                     child: Text(
@@ -130,7 +131,7 @@ class PremiumScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Image.asset("assets/images/audio.png", height: 15.0),
+                  SvgPicture.asset("assets/images/audio.svg", height: 15.0),
                   SizedBox(width: 12.0),
                   SelectionArea(
                     child: Text(

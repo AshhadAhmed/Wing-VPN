@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 class VersionScreen extends StatelessWidget {
@@ -44,7 +45,7 @@ class VersionScreen extends StatelessWidget {
               );
             },
             children: <Widget>[
-              Image.asset("assets/icon/icon.png", height: 79.0),
+              SvgPicture.asset("assets/icon/icon.svg", height: 79.0),
               SizedBox(height: 12.0),
               RichText(
                 text: TextSpan(

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -172,8 +173,8 @@ class CustomListTile extends StatelessWidget {
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Image.asset(
-                "assets/images/wifi_${serverStrength.toLowerCase()}.png",
+              SvgPicture.asset(
+                "assets/images/wifi_${serverStrength.toLowerCase()}.svg",
                 height: 18.0,
               ),
               SizedBox(width: 16.0),
@@ -181,7 +182,7 @@ class CustomListTile extends StatelessWidget {
                 server: server,
                 flag: backgroundImage,
                 strength:
-                    "assets/images/wifi_${serverStrength.toLowerCase()}.png",
+                    "assets/images/wifi_${serverStrength.toLowerCase()}.svg",
               )
             ],
           ),
@@ -349,7 +350,7 @@ class _FavouritesTabBarViewState extends State<FavouritesTabBarView>
                             ),
                           ),
                           splashColor: Colors.transparent,
-                          trailing: Image.asset(strength, height: 18.0),
+                          trailing: SvgPicture.asset(strength, height: 18.0),
                         ),
                       ),
                     ),

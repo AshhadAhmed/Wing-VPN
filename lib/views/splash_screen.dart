@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -48,7 +49,7 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(height: 100.0),
-            Image.asset("assets/icon/icon.png", height: 100.0),
+            SvgPicture.asset("assets/icon/icon.svg", height: 100.0),
             SizedBox(height: 26.0),
             RichText(
               text: TextSpan(
