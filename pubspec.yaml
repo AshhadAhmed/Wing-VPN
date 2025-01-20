@@ -67,32 +67,9 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/icon/icon.png
-    - assets/images/favourites.png
-    - assets/images/US_flag.jpg
-    - assets/images/UK_flag.png
-    - assets/images/indonesia_flag.png
-    - assets/images/spanish_flag.png
-    - assets/images/china_flag.png
-    - assets/images/singapore_flag.png
-    - assets/images/404.png
-    - assets/images/pakistan_flag.png
-    - assets/images/canada_flag.png
-    - assets/images/france_flag.png
-    - assets/images/germany_flag.png
-    - assets/images/netherlands_flag.png
-    - assets/images/wifi_weak.png
-    - assets/images/wifi_medium.png
-    - assets/images/wifi_strong.png
-    - assets/images/global.png
-    - assets/images/flash.png
-    - assets/images/server.png
-    - assets/images/audio.png
-    - assets/images/check_list.png
-    - assets/images/global_search.png
-    - assets/images/translate.png
-    - assets/images/refresh.png
-    - assets/animations/crown.json
+    - assets/icon/
+    - assets/animations/
+    - assets/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

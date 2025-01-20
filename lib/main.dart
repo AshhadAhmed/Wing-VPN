@@ -22,11 +22,26 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => LinearProgressProvider()),
-        ChangeNotifierProvider(create: (_) => VpnProvider()),
-        ChangeNotifierProvider(create: (_) => PremiumPageRadioProvider()),
-        ChangeNotifierProvider(create: (_) => FavouriteServersProvider()),
-        ChangeNotifierProvider(create: (_) => LanguagePageRadioProvider()),
+        ChangeNotifierProvider(
+          lazy: true,
+          create: (_) => LinearProgressProvider(),
+        ),
+        ChangeNotifierProvider(
+          lazy: true,
+          create: (_) => VpnProvider(),
+        ),
+        ChangeNotifierProvider(
+          lazy: true,
+          create: (_) => PremiumPageRadioProvider(),
+        ),
+        ChangeNotifierProvider(
+          lazy: true,
+          create: (_) => FavouriteServersProvider(),
+        ),
+        ChangeNotifierProvider(
+          lazy: true,
+          create: (_) => LanguagePageRadioProvider(),
+        ),
       ],
       child: const MyApp(),
     ),
