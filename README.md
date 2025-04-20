@@ -2,12 +2,12 @@
 
 **Wing-VPN UI** is a Flutter-based (Android) UI design inspired by a modern VPN application. This is a ***user interface only*** project, created from a Figma design, and does not include full VPN functionality.
 
-## Features
+## 🚀 Features
 - **Modern Design**: A sleek, user-friendly interface created using Flutter.
 - **Persistent Storage**: GetStorage to save user preferences.
 - **Staggered Animations**: Smooth animations for an enhanced user experience.
   
-## Packages used:
+## 📦 Packages used:
 - `cupertino_icons`: iOS-style icons.
 - `provider`: Simplifies state management.
 - `lottie`: Integrates Lottie animations seamlessly.
@@ -19,11 +19,11 @@
 - `go_router`: A declarative router for Flutter.
 - `flutter_svg`: A package for rendering SVG (Scalable Vector Graphics) files.
 
-## Setup
+## ⚙️ Setup
 
 To get started with this project, you need to have Flutter installed on your system. If you haven't installed it yet, follow the official Flutter installation guide: [Flutter Installation Guide](https://flutter.dev/docs/get-started/install)
 
-### Steps to run:
+### 🛠️ Steps to run:
 1. Clone this repository:
    ```bash
    git clone https://github.com/AshhadAhmed/Wing-VPN.git
